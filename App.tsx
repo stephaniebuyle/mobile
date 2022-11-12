@@ -1,49 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
 import { CollectionProps } from './types';
 import axios, { AxiosResponse } from 'axios';
 
 
 
 export default function App() {
-
-  // axios api call 
-  /* 
-  const [collectionData, setCollectionData] = useState<CollectionProps[]>([]);
-  console.clear();
-  console.log('Collection data: ', collectionData);
-  const key: string = "RcVFbOJg"
-
-  useEffect(() => {
-    axios
-      .get<CollectionProps[]>(`https://www.rijksmuseum.nl/api/nl/collection?key=RcVFbOJg&involvedMaker=Rembrandt+van+Rijn`)
-      .then((response: AxiosResponse) => {
-        setCollectionData(response.data);
-      });
-  }, []);
-  */
-
-  // via fetch 
-
-  /* const [isLoading, setLoading] = useState(true);
-  const [collectionData, setCollectionData] = useState<CollectionProps[]>([]);
-  console.log(collectionData);
-
-
-  useEffect(() => {
-    fetch('https://www.rijksmuseum.nl/api/nl/collection?key=RcVFbOJg&involvedMaker=Rembrandt+van+Rijn')
-      .then((response) => response.json())
-      .then((json) : CollectionProps => setCollectionData(json))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  }, []);
-
-
-  */
-
   const [collectionData, setCollectionData] = useState<CollectionProps>();
-  //console.clear();
+  console.clear();
   console.log(collectionData);
 
   const fetchData = async () => {
@@ -68,8 +33,23 @@ export default function App() {
   return (
     
     <View style={{ flex: 1, padding: 24 }}>
-      {collectionData?.artObjects.map((e,index) => { return <Text>{e.id} - {e.title}</Text>})}
+
+      {/*{collectionData?.artObjects.map((e,index) => { return <Text>{e.id} - {e.title}</Text>})} */}
+
+      <FlatList
+            data={collectionData?.artObjects}
+            keyExtractor={({ id }, index) => id}
+            renderItem={({ item }) => (<View>
+              <Image
+                 style={{height:20,width:20}}
+                 source={{ uri: item.webImage.url }}
+              />
+              <Text>{item.id + '. ' + item.title}</Text>
+              </View>
+            )}
+          />
      
+   
     </View>
   );
 };
