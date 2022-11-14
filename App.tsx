@@ -2,9 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
 import { CollectionProps } from './types';
-import axios, { AxiosResponse } from 'axios';
-
-
 
 export default function App() {
   const [collectionData, setCollectionData] = useState<CollectionProps>();
@@ -49,11 +46,7 @@ export default function App() {
             )}
           />
      
-   
     </View>
   );
 };
-
-
-
 
