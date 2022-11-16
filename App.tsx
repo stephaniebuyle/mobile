@@ -1,52 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
-import { CollectionProps } from './types';
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomeScreen from './components/screens/HomeScreen';
+import FavoritesScreen from './components/screens/FavoritesScreen';
+import SearchScreen from './components/screens/SearchScreen';
+import AgendaScreen from './components/screens/AgendaScreen';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [collectionData, setCollectionData] = useState<CollectionProps>();
-  console.clear();
-  console.log(collectionData);
-
-  const fetchData = async () => {
-    const response = await fetch("https://www.rijksmuseum.nl/api/nl/collection?key=RcVFbOJg&involvedMaker=Rembrandt+van+Rijn")
-    if (!response.ok) {
-      throw new Error("Data could not be fetched");
-    }
-    else {
-      return response.json();
-    }
-  }
-
-  useEffect(() => {
-    
-    fetchData()
-      .then((res) => {
-        setCollectionData(res)
-      })
-      .catch((e) => { console.log(e.message) })
-  }, []);
-
   return (
-    
-    <View style={{ flex: 1, padding: 24 }}>
-
-      {/*{collectionData?.artObjects.map((e,index) => { return <Text>{e.id} - {e.title}</Text>})} */}
-
-      <FlatList
-            data={collectionData?.artObjects}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (<View>
-              <Image
-                 style={{height:20,width:20}}
-                 source={{ uri: item.webImage.url }}
-              />
-              <Text>{item.id + '. ' + item.title}</Text>
-              </View>
-            )}
-          />
-     
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Zoeken" component={SearchScreen} />
+        <Tab.Screen name="Favorieten" component={FavoritesScreen} />
+        <Tab.Screen name="Agenda" component={AgendaScreen} />
+        
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 
