@@ -15,8 +15,7 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Zoeken" component={SearchScreen} />
         <Tab.Screen name="Favorieten" component={FavoritesScreen} />
-        <Tab.Screen name="Agenda" component={AgendaScreen} />
-        
+        <Tab.Screen name="Agenda" component={AgendaScreen} />  
       </Tab.Navigator>
     </NavigationContainer>
   );
