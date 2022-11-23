@@ -1,5 +1,5 @@
 export interface CollectionProps {
-    "count" : number,
+    "count": number,
     "artObjects": [
         {
             "links": {
@@ -33,4 +33,9 @@ export interface CollectionProps {
             "productionPlaces": string[]
         }
     ]
+}
+
+export interface SelectionOption {
+    "label": string,
+    "parameter": string
 }
