@@ -46,10 +46,10 @@ const SearchScreen = () => {
                 keyExtractor={({ id }, index) => id}
                 renderItem={({ item }) => (<View>
                     <Image
-                        style={{ height: 20, width: 20 }}
+                        style={{ height: 40, width: 40 }}
                         source={{ uri: item.webImage.url }}
                     />
-                    <Text>{item.id + '. ' + item.title}</Text>
+                    <Text>{item.id + '. ' + item.title + ' - ' + item.principalOrFirstMaker}</Text>
                 </View>
                 )}
             />)
