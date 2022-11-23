@@ -1,7 +1,10 @@
 import React from "react";
-import { FlatList, Text, View, Image, TextInput, Button } from "react-native";
+import { FlatList, Text, View, Image, TextInput, Button, Pressable, Alert } from "react-native";
 import { CollectionProps, SelectionOption } from "../../types";
 import SelectDropdown from 'react-native-select-dropdown';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 const SearchScreen = () => {
 
@@ -44,13 +47,20 @@ const SearchScreen = () => {
             return (<FlatList
                 data={collectionData?.artObjects}
                 keyExtractor={({ id }, index) => id}
-                renderItem={({ item }) => (<View>
-                    <Image
-                        style={{ height: 20, width: 20 }}
-                        source={{ uri: item.webImage.url }}
-                    />
-                    <Text>{item.id + '. ' + item.title}</Text>
-                </View>
+                renderItem={({ item }) => (
+                    <Pressable
+                        onPress={() => {
+                            Alert.alert("Pressed!")
+                        }}
+                    >
+                        <View>
+                            <Image
+                                style={{ height: 20, width: 20 }}
+                                source={{ uri: item.webImage.url }}
+                            />
+                            <Text>{item.id + '. ' + item.title}</Text>
+                        </View>
+                    </Pressable>
                 )}
             />)
         }
@@ -66,8 +76,6 @@ const SearchScreen = () => {
                 data={selectList}
                 onSelect={(selectedItem, index) => {
                     console.log(selectedItem, index);
-
-
                     setSearchField(selectedItem.parameter);
                 }}
                 defaultButtonText={'Select'}
@@ -77,7 +85,6 @@ const SearchScreen = () => {
                 rowTextForSelection={(item, index) => {
                     return item.label;
                 }}
-
             />
              <Button
                 title="Search"
