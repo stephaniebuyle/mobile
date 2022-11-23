@@ -1,9 +1,11 @@
+import { RouteProp, useRoute } from "@react-navigation/native";
 import { View, Text } from "react-native"
 
 const DetailScreen = () => {
+
     return(
         <View>
-            <Text>Detail</Text>
+            <Text>{}</Text>
         </View>
     )
 }
