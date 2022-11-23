@@ -50,7 +50,7 @@ const SearchScreen = () => {
                 renderItem={({ item }) => (
                     <Pressable
                         onPress={() => {
-                            Alert.alert("Pressed!")
+                            Alert.alert("Test")
                         }}
                     >
                         <View>
