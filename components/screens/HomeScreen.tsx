@@ -8,7 +8,7 @@ const HomeScreen = () => {
     console.log(collectionData);
   
     const fetchData = async () => {
-      const response = await fetch("https://www.rijksmuseum.nl/api/nl/collection?key=RcVFbOJg&involvedMaker=Rembrandt+van+Rijn")
+      const response = await fetch("https://www.rijksmuseum.nl/api/nl/collection?key=RcVFbOJg")
       if (!response.ok) {
         throw new Error("Data could not be fetched");
       }
@@ -28,7 +28,6 @@ const HomeScreen = () => {
 
     return(
         <View style={{ flex: 1, padding: 24 }}>
-        {/*{collectionData?.artObjects.map((e,index) => { return <Text>{e.id} - {e.title}</Text>})} */}
         <FlatList
               data={collectionData?.artObjects}
               keyExtractor={({ id }, index) => id}
