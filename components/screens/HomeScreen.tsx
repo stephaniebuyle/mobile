@@ -1,6 +1,7 @@
 import * as React from "react"
 import { View, FlatList, Image, Text } from "react-native"
 import { CollectionProps } from "../../types";
+import Constants from "expo-constants";
 
 const HomeScreen = () => {
     const [collectionData, setCollectionData] = React.useState<CollectionProps>();
@@ -27,7 +28,7 @@ const HomeScreen = () => {
     }, []);
 
     return(
-        <View style={{ flex: 1, padding: 24 }}>
+        <View style={{ flex: 1, padding: 24, paddingTop: Constants.statusBarHeight}}>
         <FlatList
               data={collectionData?.artObjects}
               keyExtractor={({ id }, index) => id}
