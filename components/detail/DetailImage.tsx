@@ -1,7 +1,11 @@
 import React from 'react'
 import { Image, View } from 'react-native'
 
-const DetailImage = ({ uri } : any) => {
+interface DetailImageProps {
+  uri: string
+}
+
+const DetailImage = ({ uri } : DetailImageProps) => {
   return (
     <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Image 

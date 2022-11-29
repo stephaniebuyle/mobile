@@ -1,6 +1,12 @@
+import { useContext } from "react"
 import { View, Text } from "react-native"
 
-const DetailDescription = ( { data } : any) => {
+interface DetailDescriptionProps {
+    data: any
+}
+
+const DetailDescription = ({ data } : DetailDescriptionProps) => {
+
     return(
         <View>
             <Text>

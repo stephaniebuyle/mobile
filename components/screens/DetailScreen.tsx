@@ -15,7 +15,7 @@ const DetailScreen = () => {
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
             <DetailImage uri={data.params?.item.webImage.url}/>
             <DetailDescription data={data} />
-            <DetailToFavorites data={data} />
+            <DetailToFavorites id={data.params.item.id} />
             <SafeImage uri={data.params?.item.webImage.url} />
         </View>
     )

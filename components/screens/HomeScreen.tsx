@@ -19,7 +19,6 @@ const HomeScreen = () => {
     }
   
     React.useEffect(() => {
-      
       fetchData()
         .then((res) => {
           setCollectionData(res)

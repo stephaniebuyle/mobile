@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 const SearchTab = () => {
     return(
         <NavigationContainer independent={true}>
-            <Stack.Navigator /*screenOptions={{ headerShown: false }}*/>
+            <Stack.Navigator>
                 <Stack.Screen name="Zoeken" component={SearchScreen} />
                 <Stack.Screen name="Detail" component={DetailScreen} />
             </Stack.Navigator>
