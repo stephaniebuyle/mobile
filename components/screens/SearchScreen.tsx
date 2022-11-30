@@ -2,9 +2,9 @@ import React from "react";
 import { FlatList, Text, View, Image, TextInput, Button, Pressable, Alert } from "react-native";
 import { CollectionProps, SelectionOption } from "../../types";
 import SelectDropdown from 'react-native-select-dropdown';
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
 
-const Stack = createNativeStackNavigator();
+
 
 const SearchScreen = () => {
 
@@ -13,6 +13,8 @@ const SearchScreen = () => {
     const [searchValue, setSearchValue] = React.useState<String>("");
     const [selectList, setSelectList] = React.useState<SelectionOption[]>([{ label: "all", parameter: "q" }, { label: "maker", parameter: "involvedMaker" }])
 
+    const navigation: any = useNavigation();
+    
     const fetchData = async () => {
 
         console.log("fetching data");
@@ -50,8 +52,8 @@ const SearchScreen = () => {
                 renderItem={({ item }) => (
                     <Pressable
                         onPress={() => {
-                            Alert.alert("Test")
-                        }}
+                            navigation.navigate("Detail", {item: item})}
+                        }
                     >
                         <View>
                             <Image
