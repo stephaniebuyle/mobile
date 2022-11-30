@@ -1,6 +1,7 @@
 import { View, Text } from "react-native"
 import React, { useContext } from "react";
-import { FavoritesContext } from "../../App";
+import { FavoritesContext } from "../Context";
+
 
 const FavoritesScreen = () => {
 
@@ -8,7 +9,7 @@ const FavoritesScreen = () => {
     
     return(
         <View>
-            {favorites.map((id) => <Text key={id}>{id}</Text>)}
+            {favorites.map((id) => <Text key={id.params.item.id}>{id.params.item.title}</Text>)}
         </View>
     )
 }

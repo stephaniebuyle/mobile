@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
@@ -6,17 +6,18 @@ import HomeScreen from './components/screens/HomeScreen';
 import FavoritesScreen from './components/screens/FavoritesScreen';
 import AgendaScreen from './components/screens/AgendaScreen';
 import SearchTab from './components/SearchTab';
+import { FavoritesContext } from './components/Context';
+import { ParamList } from './types';
 
 const Tab = createBottomTabNavigator();
 
-interface IFavoritesContext {
-  favorites: string[],
-  setFavorites: (favorites: string[]) => void
-}
-
 export default function App() {
 
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<RouteProp<ParamList, 'Detail'>[]>([]);
+
+  useEffect(() => {
+    // get favorites from async storage
+  }, []);
 
   return (
     <FavoritesContext.Provider value={{favorites: favorites, setFavorites: setFavorites}}>
@@ -41,4 +42,3 @@ export default function App() {
   );
 };
 
-export const FavoritesContext = React.createContext<IFavoritesContext>({favorites: [], setFavorites: (favorites: string[]) => {}});
