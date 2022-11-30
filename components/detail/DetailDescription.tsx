@@ -1,8 +1,10 @@
+import { RouteProp } from "@react-navigation/native"
 import { useContext } from "react"
 import { View, Text } from "react-native"
+import { ParamList } from "../../types"
 
 interface DetailDescriptionProps {
-    data: any
+    data: RouteProp<ParamList, 'Detail'>
 }
 
 const DetailDescription = ({ data } : DetailDescriptionProps) => {
