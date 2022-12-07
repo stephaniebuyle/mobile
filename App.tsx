@@ -8,6 +8,7 @@ import AgendaScreen from './components/screens/AgendaScreen';
 import SearchTab from './components/SearchTab';
 import { FavoritesContext } from './components/Context';
 import { ParamList } from './types';
+import HomeTab from './components/HomeTab';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,8 @@ export default function App() {
     <FavoritesContext.Provider value={{favorites: favorites, setFavorites: setFavorites}}>
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} options={{
+        <Tab.Screen name="Home" component={HomeTab} options={{
+            headerShown: false,
             tabBarIcon: () => <FontAwesome name="home" size={24} color={"black"} />
         }} />
         <Tab.Screen name="Zoeken" component={SearchTab} options={{
