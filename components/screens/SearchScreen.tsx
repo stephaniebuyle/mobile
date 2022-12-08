@@ -4,8 +4,6 @@ import { CollectionProps, SelectionOption } from "../../types";
 import SelectDropdown from 'react-native-select-dropdown';
 import { useNavigation } from "@react-navigation/native";
 
-
-
 const SearchScreen = () => {
 
     const [collectionData, setCollectionData] = React.useState<CollectionProps>();
@@ -14,7 +12,7 @@ const SearchScreen = () => {
     const [selectList, setSelectList] = React.useState<SelectionOption[]>([{ label: "all", parameter: "q" }, { label: "maker", parameter: "involvedMaker" }])
 
     const navigation: any = useNavigation();
-    
+
     const fetchData = async () => {
 
         console.log("fetching data");
@@ -31,29 +29,28 @@ const SearchScreen = () => {
 
     const getData = () => {
         fetchData()
-        .then((res) => {
-            setCollectionData(res)
-        })
-        .catch((e) => { console.log(e.message) })
+            .then((res) => {
+                setCollectionData(res)
+            })
+            .catch((e) => { console.log(e.message) })
         console.log(collectionData);
     }
 
     React.useEffect(() => {
         getData();
-       
+
     }, []);
 
     const displayResults = () => {
         if (collectionData?.count !== 0) {
-
             return (<FlatList
                 data={collectionData?.artObjects}
                 keyExtractor={({ id }, index) => id}
                 renderItem={({ item }) => (
                     <Pressable
-                        onPress={() => {
-                            navigation.navigate("Detail", {item: item})}
-                        }
+                        onPress={() => 
+                            { navigation.navigate("Detail", { item: item })}
+                         }
                     >
                         <View>
                             <Image
@@ -73,7 +70,7 @@ const SearchScreen = () => {
 
     return (
         <View style={{ flex: 1, padding: 24 }}>
-            <TextInput placeholder="Search..." keyboardType="default" onChange={(event) => {setSearchValue(event.nativeEvent.text)}}></TextInput>
+            <TextInput placeholder="Search..." keyboardType="default" onChange={(event) => { setSearchValue(event.nativeEvent.text) }}></TextInput>
             <SelectDropdown
                 data={selectList}
                 onSelect={(selectedItem, index) => {
@@ -88,15 +85,16 @@ const SearchScreen = () => {
                     return item.label;
                 }}
             />
-             <Button
+            <Button
                 title="Search"
                 onPress={() => {
-                  getData();
+                    getData();
                 }}
             />
             {displayResults()}
 
         </View>
+
     )
 }
 
