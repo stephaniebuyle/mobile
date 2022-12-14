@@ -9,6 +9,8 @@ import SearchTab from './components/SearchTab';
 import { FavoritesContext } from './components/Context';
 import { ParamList } from './types';
 import HomeTab from './components/HomeTab';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -17,8 +19,16 @@ export default function App() {
   const [favorites, setFavorites] = useState<RouteProp<ParamList, 'Detail'>[]>([]);
 
   useEffect(() => {
-    // get favorites from async storage
+    getFavorites();
   }, []);
+
+  const getFavorites = async () => {
+    const value: string | null = await AsyncStorage.getItem("favorites");
+    if(value !== null){
+      setFavorites(JSON.parse(value));
+      console.log("uit async" + value)
+    }
+  };
 
   return (
     <FavoritesContext.Provider value={{favorites: favorites, setFavorites: setFavorites}}>

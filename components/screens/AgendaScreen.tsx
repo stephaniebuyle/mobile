@@ -1,6 +1,5 @@
 import { View } from "react-native";
-import Agenda from "../Agenda";
-import Kalender from "../Calendar";
+import Agenda from "../agenda/Agenda";
 
 const AgendaScreen = () => {
     return(

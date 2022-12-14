@@ -53,8 +53,6 @@ const HomeScreen = () => {
                             <Text style={styles.legend}>{item.title}</Text>
                         </View>
                     </Pressable>
-
-                
               )}
             />
       </View>
