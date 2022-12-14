@@ -1,5 +1,5 @@
 import { RouteProp } from "@react-navigation/native";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Pressable, Text } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ParamList } from "../../types";
@@ -13,9 +13,16 @@ const DetailToFavorites = ({ data } : DetailToFavoritesProps ) => {
 
     const { favorites, setFavorites } = useContext(FavoritesContext);
 
+    useEffect(()=>{
+       saveFavorites(favorites); 
+    }, [favorites])
+
+    const saveFavorites = async (favorites: RouteProp<ParamList, "Detail">[] ) => {
+        await AsyncStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+
     const addFavorite = async ( data : RouteProp<ParamList, 'Detail'>) => {
         setFavorites([...favorites, data]);
-        await AsyncStorage.setItem("favorite", JSON.stringify(favorites));
         alert("Toegevoegd aan favorieten");
     }
 

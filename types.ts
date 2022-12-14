@@ -56,3 +56,11 @@ export type ParamList = {
         item: ItemProps
     }
 }
+
+export type Expo = {
+    startDate: Date,
+    endDate: Date,
+    title: string,
+    description: string,
+    image: string
+}

@@ -1,10 +1,10 @@
-import { View, Text } from "react-native"
-import Constants from "expo-constants";
+import { View } from "react-native";
+import Agenda from "../agenda/Agenda";
 
 const AgendaScreen = () => {
     return(
         <View>
-            <Text>Agenda</Text>
+            <Agenda />
         </View>
     )
 }
