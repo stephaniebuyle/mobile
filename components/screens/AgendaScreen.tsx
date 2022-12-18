@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { FlatList, Pressable, View, Image, Text } from "react-native";
+import { FlatList, Pressable, View, Image, Text, StyleSheet, ImageBackground } from "react-native";
 import { Expo } from "../../types";
 
 const data = require('../../ExpoData.json');
@@ -9,7 +9,7 @@ const AgendaScreen = () => {
     const navigation: any = useNavigation();
 
     return(
-        <View>
+        <View style={styles.container}>
             <FlatList
                 data={expos}
                 renderItem={({item}) => (
@@ -18,14 +18,17 @@ const AgendaScreen = () => {
                             navigation.navigate("Expo", {item: item})}
                     }
                     >
-                        <View style={{display: "flex", flexDirection: "row"}}>
+                        <View style={styles.listItem}>
                             <Image
-                                style={{height: 100, width: 100}} 
+                                style={styles.listItemImage} 
                                 source={
                                     {uri: item.image}
                                 } 
                             />
-                            <Text>{item.title}</Text>
+                            <View style={styles.listItemText}>
+                                <Text style={styles.listItemTitle}>{item.title}</Text>
+                                <Text style={styles.listItemSubtitle}>{item.subtitle}</Text>
+                            </View>
                         </View>
                     </Pressable>
                 )}
@@ -34,5 +37,35 @@ const AgendaScreen = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+
+    },
+    listItem: {
+        display: "flex", 
+        flexDirection: "row",
+        marginTop: 10,
+        marginLeft: 10,
+        backgroundColor: "white"
+        
+    },
+    listItemImage: {
+        height: 100, 
+        width: 100
+    },
+    listItemText: {
+        paddingTop: 3,
+        paddingLeft: 10,
+        width: 275
+    },
+    listItemTitle: {
+        textTransform: "uppercase"
+    },
+    listItemSubtitle: {
+        fontStyle: "italic",
+        color: "grey"
+    }
+});
 
 export default AgendaScreen;

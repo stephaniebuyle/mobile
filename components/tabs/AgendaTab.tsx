@@ -11,7 +11,7 @@ const AgendaTab = () => {
         <NavigationContainer independent={true}>
             <Stack.Navigator>
                 <Stack.Screen name="Agenda" component={AgendaScreen} />
-                <Stack.Screen name="Expo" component={ExpoScreen} />
+                <Stack.Screen name="Expo" component={ExpoScreen} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>
     )
