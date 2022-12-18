@@ -3,7 +3,7 @@ import { View, Text, Pressable } from "react-native";
 
 const ExpoDetailScreen = ({expo}: {expo: any}) => {
 
-    const navigation = useNavigation();
+    const navigation: any = useNavigation();
 
     return(
         <View>
