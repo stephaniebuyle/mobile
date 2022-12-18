@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Platform, StatusBar, Alert, Button } from "react-native";
+import { View, Text, StyleSheet, Platform, Alert, Button } from "react-native";
 import CalendarPicker from "react-native-calendar-picker";
 import * as Calendar from "expo-calendar";
 
@@ -46,8 +46,8 @@ const Agenda = () => {
           title: 'Expo Calendar',
           color: 'blue',
           entityType: Calendar.EntityTypes.EVENT,
-          sourceId: defaultCalendarSource.id,
-          source: defaultCalendarSource,
+          //sourceId: defaultCalendarSource.id,
+          //source: defaultCalendarSource,
           name: 'internalCalendarName',
           ownerAccount: 'personal',
           accessLevel: Calendar.CalendarAccessLevel.OWNER,

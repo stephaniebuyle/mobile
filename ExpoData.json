@@ -1,0 +1,28 @@
+[
+    {
+        "startDate": "2022-09-30T10:00:00.000Z",
+        "endDate": "2023-01-15T18:00:00.000Z",
+        "title": "Clara de neushoorn",
+        "description": "Onbekend, groot, imponerend en vreemd, maar vooral anders dan alle bekende dieren. Clara de neushoorn vertelt het wonderlijke verhaal van de beroemdste neushoorn uit de geschiedenis.",
+        "subtitle": "Superster van de 18e eeuw",
+        "image": "https://rijks-frontend.azureedge.net/assets/08eb155e-b5b8-422d-b2e8-9ef51fa67277?w=770&h=1026&fx=2468&fy=642&format=webp&c=e1a2beeca90aa316566bf659df6db40780fd349d56fd20127c598f9df159e794"
+    },
+    {
+        "startDate": "2022-09-30T10:00:00.000Z",
+        "endDate": "2023-01-15T18:00:00.000Z",
+        "title": "Onderkruipsels",
+        "description": "Meer dan 1000 kleurrijke vlinders, harige spinnen en glimmende padden krioelen door het Rijksmuseum. In ruim 140 schilderijen, beelden, boeken en specimen op sterk water zie je de steeds veranderende blik op Onderkruipsels in de kunst en wetenschap.",
+        "subtitle": "Van gruwelen tot verwonderen",
+        "image": "https://rijks-frontend.azureedge.net/assets/64786139-b5b4-46dd-93df-6c1acefc4f5f?w=770&h=1026&fx=1832&fy=945&format=webp&c=5a7da0dbdf3d6e1347bcfec864087bc51ec4031cf29772b1e579843167b193e4"
+    }
+    ,
+    {
+        "startDate": "2023-02-10T10:00:00.000Z",
+        "endDate": "2023-06-04T18:00:00.000Z",
+        "title": "Vermeer",
+        "description": "Het grootste overzicht ooit van Johannes Vermeer",
+        "subtitle": "Het grootste overzicht ooit van Johannes Vermeer",
+        "image": "https://rijks-frontend.azureedge.net/assets/bfbe95ae-f7f6-432b-8447-3b8ff08d954e?w=770&h=1026&fx=3963&fy=4692&format=webp&c=4c8b8eb72a16d82696e5db2278d9b5d4eceed80af1ee15066c5e84088ac96a66"
+    }
+]
+

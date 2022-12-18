@@ -51,16 +51,11 @@ export interface ItemProps{
     "productionPlaces": string[]
 }
 
-export type ParamList = {
-    Detail:{
-        item: ItemProps
-    }
-}
-
 export type Expo = {
     startDate: Date,
     endDate: Date,
     title: string,
     description: string,
+    subtitle: string,
     image: string
 }

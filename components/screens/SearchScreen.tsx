@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, Text, View, Image, TextInput, Button, Pressable, Alert } from "react-native";
+import { FlatList, Text, View, Image, TextInput, Button, Pressable } from "react-native";
 import { CollectionProps, SelectionOption } from "../../types";
 import SelectDropdown from 'react-native-select-dropdown';
 import { useNavigation } from "@react-navigation/native";

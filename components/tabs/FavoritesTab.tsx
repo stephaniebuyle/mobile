@@ -2,10 +2,10 @@ import { View, Text } from "react-native"
 import React, { useContext } from "react";
 import { FavoritesContext } from "../Context";
 
-
-const FavoritesScreen = () => {
+const FavoritesTab = () => {
 
     const { favorites, setFavorites } = useContext(FavoritesContext);
+    
     
     return(
         <View>
@@ -14,4 +14,4 @@ const FavoritesScreen = () => {
     )
 }
 
-export default FavoritesScreen;
+export default FavoritesTab;
