@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList, Image, Text, Pressable } from "react-native
 import { CollectionProps } from "../../types";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
+import HomeCard from "../home/HomeCard";
 
 const HomeScreen = () => {
   const [collectionData, setCollectionData] = React.useState<CollectionProps>();
@@ -36,22 +37,7 @@ const HomeScreen = () => {
         data={collectionData?.artObjects}
         keyExtractor={({ id }, index) => id}
         renderItem={({ item }) => (
-
-          <Pressable
-            onPress={() => {
-              navigation.navigate("Detail", { item: item })
-            }
-            }
-          >
-            <View style={styles.card}>
-
-              <Image style={styles.img}
-
-                source={{ uri: item.webImage?.url }}
-              />
-              <Text style={styles.legend}>{item.title}</Text>
-            </View>
-          </Pressable>
+         <HomeCard item={item} navigation={navigation}/>
         )}
       />
     </View>
