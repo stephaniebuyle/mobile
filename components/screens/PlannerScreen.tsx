@@ -1,14 +1,16 @@
 import { useRoute } from "@react-navigation/native";
-import { View } from "react-native";
-import Agenda from "../agenda/Agenda";
+import { View, Text } from "react-native";
+import { Expo } from "../../types";
+import DatePicker from "../datePicker/DatePicker";
 
 const PlannerScreen = () => {
-    
-    const data = useRoute<any>();
+
+    const route = useRoute<any>();
+    const expo: Expo = route.params?.expo;
     
     return(
         <View>
-            <Agenda />
+            <DatePicker expo={expo} />
         </View>
     )
 }

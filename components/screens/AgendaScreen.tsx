@@ -15,6 +15,7 @@ const AgendaScreen = () => {
                 renderItem={({item}) => (
                     <Pressable
                         onPress={() => {
+                            console.log(item)
                             navigation.navigate("Expo", {item: item})}
                     }
                     >
@@ -48,7 +49,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         backgroundColor: "white"
-        
     },
     listItemImage: {
         height: 100, 
