@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {  View, Text, Platform, Alert, Pressable, StyleSheet } from 'react-native';
 import * as Calendar from 'expo-calendar';
 import { Expo } from '../../types';
-import CalendarPicker, { DateChangedCallback } from 'react-native-calendar-picker';
+import CalendarPicker from 'react-native-calendar-picker';
 
 interface AgendaProps {
   expo: Expo;

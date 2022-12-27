@@ -8,6 +8,7 @@ import DetailToFavorites from "../detail/DetailToFavorites";
 const DetailScreen = () => {
     
     const data = useRoute<any>();
+    console.log(data);
 
     return(
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
