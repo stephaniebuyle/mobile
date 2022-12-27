@@ -1,5 +1,5 @@
 import * as React from "react"
-import { StyleSheet, View, FlatList, Image, Text, Pressable } from "react-native"
+import { StyleSheet, View, FlatList, Text } from "react-native"
 import { CollectionProps } from "../../types";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";

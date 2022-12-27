@@ -34,6 +34,19 @@ export interface ArtObject {
         "productionPlaces": string[]
 }
 
+export interface HomeCardProps {
+    item: ArtObject;
+    navigation: any;
+}
+
+export interface SearchProps {
+
+    callbackSetSearch: (value: string) => void;
+    callbackSetField: (value: string) => void;
+    callbackRunSearch: () => void;
+
+}
+
 export interface SelectionOption {
     "label": string,
     "parameter": string

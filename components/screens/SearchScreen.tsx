@@ -1,15 +1,14 @@
-import React from "react";
-import { FlatList, Text, View, Image, TextInput, Button, Pressable, Alert } from "react-native";
-import { CollectionProps, SelectionOption } from "../../types";
-import SelectDropdown from 'react-native-select-dropdown';
+import React, { useEffect, useState } from "react";
+import { FlatList, Text, View, Image, Pressable } from "react-native";
+import { CollectionProps } from "../../types";
 import { useNavigation } from "@react-navigation/native";
+import SearchBar from "../search/SearchBar";
 
 const SearchScreen = () => {
 
-    const [collectionData, setCollectionData] = React.useState<CollectionProps>();
-    const [searchField, setSearchField] = React.useState<String>("q");
-    const [searchValue, setSearchValue] = React.useState<String>("");
-    const [selectList, setSelectList] = React.useState<SelectionOption[]>([{ label: "all", parameter: "q" }, { label: "maker", parameter: "involvedMaker" }])
+    const [collectionData, setCollectionData] = useState<CollectionProps>();
+    const [searchField, setSearchField] = useState<String>("q");
+    const [searchValue, setSearchValue] = useState<String>("");
 
     const navigation: any = useNavigation();
 
@@ -36,9 +35,8 @@ const SearchScreen = () => {
         console.log(collectionData);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         getData();
-
     }, []);
 
     const displayResults = () => {
@@ -48,9 +46,8 @@ const SearchScreen = () => {
                 keyExtractor={({ id }, index) => id}
                 renderItem={({ item }) => (
                     <Pressable
-                        onPress={() => 
-                            { navigation.navigate("Detail", { item: item })}
-                         }
+                        onPress={() => { navigation.navigate("Detail", { item: item }) }
+                        }
                     >
                         <View>
                             <Image
@@ -68,34 +65,25 @@ const SearchScreen = () => {
         }
     }
 
+    const handleSetSearch = (value: string) => {
+        setSearchValue(value);
+    }
+
+    const handleSetField = (value: string) => {
+        setSearchField(value);
+    }
+
+    const handleRunSearch = () => {
+        getData();
+    }
+
     return (
         <View style={{ flex: 1, padding: 24 }}>
-            <TextInput placeholder="Search..." keyboardType="default" onChange={(event) => { setSearchValue(event.nativeEvent.text) }}></TextInput>
-            <SelectDropdown
-                data={selectList}
-                onSelect={(selectedItem, index) => {
-                    console.log(selectedItem, index);
-                    setSearchField(selectedItem.parameter);
-                }}
-                defaultButtonText={'Select'}
-                buttonTextAfterSelection={(selectedItem, index) => {
-                    return selectedItem.label;
-                }}
-                rowTextForSelection={(item, index) => {
-                    return item.label;
-                }}
-            />
-            <Button
-                title="Search"
-                onPress={() => {
-                    getData();
-                }}
-            />
+            <SearchBar callbackSetSearch={handleSetSearch} callbackSetField={handleSetField} callbackRunSearch={handleRunSearch} />
             {displayResults()}
 
         </View>
 
     )
 }
-
 export default SearchScreen;

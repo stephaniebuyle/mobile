@@ -1,11 +1,6 @@
 import React from 'react'
 import { Pressable, View, StyleSheet, Image, Text } from 'react-native';
-import { ArtObject } from "../../types";
-
-interface HomeCardProps {
-    item: ArtObject;
-    navigation: any;
-}
+import { ArtObject, HomeCardProps } from "../../types";
 
 const HomeCard = (props: HomeCardProps) => {
     return (
