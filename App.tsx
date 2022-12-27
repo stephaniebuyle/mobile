@@ -1,4 +1,4 @@
-import { NavigationContainer, RouteProp } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import HomeTab from './components/tabs/HomeTab';
