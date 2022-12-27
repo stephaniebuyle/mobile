@@ -1,5 +1,5 @@
 import React from "react"
-import { FlatList, Text } from "react-native"
+import { FlatList, Text, StyleSheet } from "react-native"
 import { SearchResultProps } from "../../types"
 import SearchCard from "./SearchCard"
 
@@ -10,6 +10,7 @@ const SearchResults = (props: SearchResultProps) => {
 
         if (props.collectionData?.count !== 0 ) {
             return (<FlatList
+                style={{zIndex:-99}}
                 data={props.collectionData?.artObjects}
                 keyExtractor={({ id }, index) => id}
                 renderItem={({ item }) => (
@@ -18,7 +19,7 @@ const SearchResults = (props: SearchResultProps) => {
             />)
         }
         else {
-            return <Text>Geen resultaten</Text>
+            return <Text style={styles.text}>Geen resultaten</Text>
         }
     }
 
@@ -27,5 +28,12 @@ const SearchResults = (props: SearchResultProps) => {
         
     )
 }
-
+const styles = StyleSheet.create({
+    text: {
+        marginTop: 60,
+        textAlign: 'center',
+        fontSize: 20,
+        zIndex: -99
+    },
+});
 export default SearchResults; 

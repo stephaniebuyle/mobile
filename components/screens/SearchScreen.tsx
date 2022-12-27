@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, View, Image, Pressable, StyleSheet} from "react-native";
-import { CollectionProps, PaginationProps } from "../../types";
+import { CollectionProps } from "../../types";
 import { useNavigation } from "@react-navigation/native";
 import SearchBar from "../search/SearchBar";
 import SearchResults from "../search/SearchResults";

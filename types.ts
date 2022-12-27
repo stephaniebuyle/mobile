@@ -58,11 +58,6 @@ export interface SearchResultProps {
     collectionData?: CollectionProps
 }
 
-export interface SelectionOption {
-    "label": string,
-    "parameter": string
-}
-
 export interface ItemProps{
     "id": string,
     "objectNumber": string,
