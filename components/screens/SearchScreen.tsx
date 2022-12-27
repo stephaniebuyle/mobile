@@ -3,6 +3,7 @@ import { FlatList, Text, View, Image, Pressable } from "react-native";
 import { CollectionProps } from "../../types";
 import { useNavigation } from "@react-navigation/native";
 import SearchBar from "../search/SearchBar";
+import SearchResults from "../search/SearchResults";
 
 const SearchScreen = () => {
 
@@ -39,31 +40,7 @@ const SearchScreen = () => {
         getData();
     }, []);
 
-    const displayResults = () => {
-        if (collectionData?.count !== 0) {
-            return (<FlatList 
-                data={collectionData?.artObjects}
-                keyExtractor={({ id }, index) => id}
-                renderItem={({ item }) => (
-                    <Pressable
-                        onPress={() => { navigation.navigate("Detail", { item: item }) }
-                        }
-                    >
-                        <View>
-                            <Image
-                                style={{ height: 20, width: 20 }}
-                                source={{ uri: item.webImage.url }}
-                            />
-                            <Text>{item.id + '. ' + item.title}</Text>
-                        </View>
-                    </Pressable>
-                )}
-            />)
-        }
-        else {
-            return <Text>No results</Text>
-        }
-    }
+   
 
     const handleSetSearch = (value: string) => {
         setSearchValue(value);
@@ -80,7 +57,7 @@ const SearchScreen = () => {
     return (
         <View style={{ flex: 1, padding: 24 }}>
             <SearchBar callbackSetSearch={handleSetSearch} callbackSetField={handleSetField} callbackRunSearch={handleRunSearch} fieldValue={searchField} searchValue={searchValue} />
-            {displayResults()}
+            <SearchResults navigation={navigation} collectionData={collectionData} />
 
         </View>
 

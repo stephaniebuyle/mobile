@@ -34,7 +34,7 @@ export interface ArtObject {
         "productionPlaces": string[]
 }
 
-export interface HomeCardProps {
+export interface CardProps {
     item: ArtObject;
     navigation: any;
 }
@@ -47,6 +47,11 @@ export interface SearchProps {
     fieldValue: string;
     searchValue : string;
 
+}
+
+export interface SearchResultProps {
+    navigation: any,
+    collectionData?: CollectionProps
 }
 
 export interface SelectionOption {

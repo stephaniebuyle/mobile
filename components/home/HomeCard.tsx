@@ -1,8 +1,8 @@
 import React from 'react'
 import { Pressable, View, StyleSheet, Image, Text } from 'react-native';
-import { ArtObject, HomeCardProps } from "../../types";
+import { ArtObject, CardProps } from "../../types";
 
-const HomeCard = (props: HomeCardProps) => {
+const HomeCard = (props: CardProps) => {
     return (
         <Pressable
             onPress={() => {
