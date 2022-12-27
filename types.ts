@@ -44,6 +44,8 @@ export interface SearchProps {
     callbackSetSearch: (value: string) => void;
     callbackSetField: (value: string) => void;
     callbackRunSearch: () => void;
+    fieldValue: string;
+    searchValue : string;
 
 }
 

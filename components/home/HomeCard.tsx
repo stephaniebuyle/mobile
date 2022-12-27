@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     img: {
         height: 350,
         width: '100%',
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         borderWidth: 1,
         borderColor: "gray",
     },
@@ -40,11 +40,6 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(0,0,0,0.7)",
         color: "#ffffff",
         padding: 2,
-    },
-    titleApp: {
-        fontWeight: "bold",
-        fontSize: 33,
-        textAlign: "center"
     }
 });
 export default HomeCard;

@@ -41,7 +41,7 @@ const SearchScreen = () => {
 
     const displayResults = () => {
         if (collectionData?.count !== 0) {
-            return (<FlatList
+            return (<FlatList 
                 data={collectionData?.artObjects}
                 keyExtractor={({ id }, index) => id}
                 renderItem={({ item }) => (
@@ -79,7 +79,7 @@ const SearchScreen = () => {
 
     return (
         <View style={{ flex: 1, padding: 24 }}>
-            <SearchBar callbackSetSearch={handleSetSearch} callbackSetField={handleSetField} callbackRunSearch={handleRunSearch} />
+            <SearchBar callbackSetSearch={handleSetSearch} callbackSetField={handleSetField} callbackRunSearch={handleRunSearch} fieldValue={searchField} searchValue={searchValue} />
             {displayResults()}
 
         </View>
