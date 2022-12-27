@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
         width: 180
     }
 });
-export default SearchBar; 
+export default SearchBar;

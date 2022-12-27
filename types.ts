@@ -38,7 +38,11 @@ export interface CardProps {
     item: ArtObject;
     navigation: any;
 }
-
+export interface PaginationProps {
+    callbackSetPage: (value: number) => void;
+    count: number,
+    page: number
+}
 export interface SearchProps {
 
     callbackSetSearch: (value: string) => void;

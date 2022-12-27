@@ -5,7 +5,10 @@ import SearchCard from "./SearchCard"
 
 const SearchResults = (props: SearchResultProps) => {
     const displayResults = () => {
-        if (props.collectionData?.count !== 0) {
+
+        // console.log(`result: ${JSON.stringify(props.collectionData)}`);
+
+        if (props.collectionData?.count !== 0 ) {
             return (<FlatList
                 data={props.collectionData?.artObjects}
                 keyExtractor={({ id }, index) => id}
@@ -18,8 +21,11 @@ const SearchResults = (props: SearchResultProps) => {
             return <Text>Geen resultaten</Text>
         }
     }
+
     return (
         displayResults()
+        
     )
 }
+
 export default SearchResults; 
