@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { AsyncStorage } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Detail } from "../types";
 
 interface IFavoritesContext {
@@ -68,4 +68,3 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
     </FavoritesContext.Provider>
   )
 }
-

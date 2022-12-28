@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Pressable, Text } from "react-native"
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Detail } from "../../types";
 import { FavoritesContext } from "../Context";
 import { AntDesign } from "@expo/vector-icons";
