@@ -6,8 +6,8 @@ import { FavoritesContext } from "../Context";
 
 const FavoriteCard = (props: FavoriteCardProps) => {
 
-
     const { favorites, removeFavorite } = useContext(FavoritesContext);
+
     return (
 
         <View style={styles.container}>
@@ -30,7 +30,7 @@ const FavoriteCard = (props: FavoriteCardProps) => {
                     onPress={() => { removeFavorite(props.detail.params.item.id) }
                     }
                 >
-                    <AntDesign styles={styles.delete} name="delete" size={15} color="purple" />
+                    <AntDesign styles={styles.delete} name="delete" size={17} color="purple" />
                 </Pressable>
             </View>
         </View>
@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         borderRadius: 10,
-        minHeight: 80,
-        backgroundColor: 'white',
+        minHeight: 90,
+        backgroundColor: '#eae4ed',
         alignItems: 'center',
         marginTop: 15,
-        paddingRight: 15
+        paddingRight: 15, 
     },
     cardInfo: {
         flexDirection: 'row',
@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     },
     text: {
         flex: 1,
-        paddingRight: 20
+        paddingRight: 20,
+        fontSize: 15
     },
     delete: {
         flex: 1

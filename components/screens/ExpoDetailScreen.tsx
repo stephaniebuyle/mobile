@@ -1,28 +1,26 @@
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable } from "react-native";
-import PlannerScreen from "./PlannerScreen";
 
-const ExpoDetailScreen = ({expo}: {expo: any}) => {
+const ExpoDetailScreen = ({ expo }: { expo: any }) => {
 
     const navigation: any = useNavigation();
     console.log(expo);
     const Stack = createNativeStackNavigator();
 
-    return(
-    <View>
-                <View>
+    return (
+        <View>
+            <View>
                 <Text>{expo.title}</Text>
-            
+
                 <Pressable
-                    onPress={() => 
-                        { navigation.navigate("Planner", {expo: expo})}
+                    onPress={() => { navigation.navigate("Planner", { expo: expo }) }
                     }
                 >
                     <Text>Zet in agenda</Text>
                 </Pressable>
-             </View>
-    </View>
+            </View>
+        </View>
     )
 }
 

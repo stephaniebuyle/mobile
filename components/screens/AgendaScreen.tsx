@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { FlatList, Pressable, View, Image, Text, StyleSheet, ImageBackground } from "react-native";
+import { FlatList, Pressable, View, Image, Text, StyleSheet } from "react-native";
 import { Expo } from "../../types";
 
 const data = require('../../ExpoData.json');
@@ -9,7 +9,7 @@ const AgendaScreen = () => {
     const navigation: any = useNavigation();
 
     return(
-        <View style={styles.container}>
+        <View>
             <FlatList
                 data={expos}
                 renderItem={({item}) => (
@@ -40,9 +40,6 @@ const AgendaScreen = () => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-
-    },
     listItem: {
         display: "flex", 
         flexDirection: "row",

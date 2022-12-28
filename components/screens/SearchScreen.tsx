@@ -80,7 +80,9 @@ const styles = StyleSheet.create({
         padding: 24
     },
     text: {
-        padding: 15
+        padding: 15,   
+        fontSize: 15,
+        fontWeight: 'bold'
     },
     pagination: {
         flex: 1

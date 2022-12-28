@@ -1,36 +1,37 @@
-import React, { useContext, useEffect } from "react";
-import { Pressable, Text } from "react-native"
-import { Detail } from "../../types";
+import React, { useContext } from "react";
+import { Pressable, StyleSheet } from "react-native"
+import { DetailToFavoritesProps } from "../../types";
 import { FavoritesContext } from "../Context";
 import { AntDesign } from "@expo/vector-icons";
 
-interface DetailToFavoritesProps {
-    data: Detail;
-}
-
-const DetailToFavorites = ({ data } : DetailToFavoritesProps ) => {
+const DetailToFavorites = ({ data }: DetailToFavoritesProps) => {
 
     const { favorites, setFavorites, addFavorite, isFavorite, removeFavorite } = useContext(FavoritesContext);
 
-    return(
+    return (
         <Pressable
             onPress={() => {
-                if(!isFavorite(data.params.item.id)){
+                if (!isFavorite(data.params.item.id)) {
                     addFavorite(data)
                 }
-                else{
+                else {
                     removeFavorite(data.params.item.id)
                 }
-                }
             }
-            style={{ backgroundColor: "lightblue", padding: 5, margin: 5}}
+            }
+            style={styles.button}
         >
-            {isFavorite(data.params.item.id) ? <AntDesign name="heart" size={24} color="purple" /> : <AntDesign name="heart" size={24} color="black" /> }
+            {isFavorite(data.params.item.id) ? <AntDesign name="heart" size={24} color="purple" /> : <AntDesign name="heart" size={24} color="black" />}
         </Pressable>
     )
 }
-
-
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: "lightgrey",
+        padding: 5,
+        margin: 5
+    },
+});
 
 export default DetailToFavorites;
 

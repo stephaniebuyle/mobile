@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import SearchTab from './components/tabs/SearchTab';
 import FavoritesTab from './components/tabs/FavoritesTab';
-import { FavoritesContext, FavoritesProvider } from './components/Context';
+import { FavoritesProvider } from './components/Context';
 import AgendaTab from './components/tabs/AgendaTab';
 
 
