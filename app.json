@@ -18,13 +18,21 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSRemindersUsageDescription": "Access to the calendar is necessary for the purpose of data integration with calendar of the device.",
+        "NSCalendarsUsageDescription": "Access to the calendar is necessary for the purpose of data integration with calendar of the device. Consent for access is voluntary, but failure to do so may result in restriction or loss of the functionality."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "READ_CALENDAR",
+        "WRITE_CALENDAR"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

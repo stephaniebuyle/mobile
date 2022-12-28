@@ -1,13 +1,12 @@
+import DetailScreen from "../screens/DetailScreen";
+import HomeScreen from "../screens/HomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import DetailScreen from "./screens/DetailScreen";
-import HomeScreen from "./screens/HomeScreen";
-
 
 const Stack = createNativeStackNavigator();
 
-const HomeTab = () => {
-    return(
+const SearchTab = () => {
+    return (
         <NavigationContainer independent={true}>
             <Stack.Navigator>
                 <Stack.Screen name="Home" component={HomeScreen} />
@@ -17,4 +16,4 @@ const HomeTab = () => {
     )
 }
 
-export default HomeTab;
+export default SearchTab;

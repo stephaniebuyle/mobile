@@ -1,14 +1,15 @@
-import { RouteProp, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import { View } from "react-native";
 import React from "react";
 import DetailImage from "../detail/DetailImage";
 import DetailDescription from "../detail/DetailDescription";
 import DetailToFavorites from "../detail/DetailToFavorites";
-import { ParamList } from "../../types";
 
 const DetailScreen = () => {
-
-    const data = useRoute<RouteProp<ParamList, 'Detail'>>();
+    
+    const data = useRoute<any>();
+    console.log('data format')
+    console.log(data);
 
     return(
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>

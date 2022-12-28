@@ -1,10 +1,10 @@
 import { RouteProp } from "@react-navigation/native";
 import React from "react";
-import { ParamList } from "../types";
+import { Detail } from "../types";
 
 interface IFavoritesContext {
-    favorites: RouteProp<ParamList, 'Detail'>[],
-    setFavorites: (favorites: RouteProp<ParamList, 'Detail'>[]) => void
+    favorites: Detail[],
+    setFavorites: (favorites: Detail[]) => void
   }
 
-export const FavoritesContext = React.createContext<IFavoritesContext>({favorites: [], setFavorites: (favorites: RouteProp<ParamList, 'Detail'>[]) => {}});
+export const FavoritesContext = React.createContext<IFavoritesContext>({favorites: [], setFavorites: (favorites: Detail[]) => {}});

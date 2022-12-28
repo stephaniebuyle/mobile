@@ -1,12 +1,13 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import DetailScreen from "./screens/DetailScreen";
-import SearchScreen from "./screens/SearchScreen";
+import SearchScreen from "../screens/SearchScreen";
+import DetailScreen from "../screens/DetailScreen";
 
 const Stack = createNativeStackNavigator();
 
 const SearchTab = () => {
-    return(
+    return (
         <NavigationContainer independent={true}>
             <Stack.Navigator>
                 <Stack.Screen name="Zoeken" component={SearchScreen} />
@@ -17,3 +18,6 @@ const SearchTab = () => {
 }
 
 export default SearchTab;
+
+
+
