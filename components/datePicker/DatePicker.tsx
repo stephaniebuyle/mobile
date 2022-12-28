@@ -29,12 +29,10 @@ const DatePicker = ({expo}: AgendaProps) => {
   
   const getDefaultCalendarSource = async () => {
     const defaultCalendar = await Calendar.getDefaultCalendarAsync();
-    console.log(defaultCalendar); 
     return defaultCalendar.id;
   }
 
   const addEvent = async (calendarId: string) => {
-
     const startEventDate: Date = new Date(selectedStartDate);
     const endEventDate: Date = new Date(selectedStartDate);
     startEventDate.setHours(10);
@@ -57,12 +55,12 @@ const DatePicker = ({expo}: AgendaProps) => {
         if(calendarId !== undefined){
           try{
             addEvent(calendarId);
-            Alert.alert("Toegevoegd aan je agenda!");
+            alert("Toegevoegd aan je agenda!");
           } catch (e) {
             console.log(e)
           }
         } else {
-          Alert.alert("Het is niet gelukt om dit event toe te voegen aan je agenda")
+            alert("Het is niet gelukt om dit event toe te voegen aan je agenda")
         }
       })
   }

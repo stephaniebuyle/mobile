@@ -33,9 +33,8 @@ const DetailToFavorites = ({ data } : DetailToFavoritesProps ) => {
     return(
         <Pressable
             onPress={() => addFavorite(data)}
-            style={{ backgroundColor: "lightblue", padding: 5, margin: 5}}
         >
-            {favorites.find(favorite => favorite.key == data.key) ? <AntDesign name="heart" size={24} color="red" /> : <AntDesign name="heart" size={24} color="black" /> }
+            {favorites.find(favorite => favorite.key == data.key) ? <AntDesign name="heart" size={24} color="red" /> : <AntDesign name="heart" size={24} color="grey" /> }
         </Pressable>
     )
 }

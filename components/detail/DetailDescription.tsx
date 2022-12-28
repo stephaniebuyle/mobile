@@ -1,5 +1,4 @@
 import { RouteProp } from "@react-navigation/native"
-import { useContext } from "react"
 import { View, Text } from "react-native"
 
 interface DetailDescriptionProps {
@@ -7,7 +6,6 @@ interface DetailDescriptionProps {
 }
 
 const DetailDescription = ({ data } : DetailDescriptionProps) => {
-
     return(
         <View>
             <Text>
