@@ -1,3 +1,5 @@
+import { RouteProp } from "@react-navigation/native";
+
 export interface CollectionProps {
     "count": number,
     "artObjects": ArtObject[]
@@ -105,6 +107,39 @@ export type Detail = {
     }
 }
 
+export interface DetailImageProps {
+  uri: string
+}
+
+/* interfaces datepicker */
+export interface AgendaProps {
+    expo: Expo;
+  }
+  
+export interface EventDetails {
+    title: string,
+    startDate: Date,
+    endDate: Date
+  }
+
+/* interface DetailDescription */ 
+
+export interface DetailDescriptionProps {
+    data: RouteProp<any>;
+}
+
+/* interface DetailToFavorites */ 
+export interface DetailToFavoritesProps {
+    data: Detail;
+}
+
+/* interface FavoriteCard */ 
+export interface FavoriteCardProps {
+    favorite: Detail,
+    navigation: any
+}
+
+/* Expo component */
 export type Expo = {
     startDate: Date,
     endDate: Date,

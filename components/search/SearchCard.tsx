@@ -25,8 +25,6 @@ const SearchCard = (props: CardProps) => {
                             if (!isFavorite(props.item.id)) {
                                 let rand = new Date().getTime().toString();
                                 let detailObject: Detail = { key: rand, params: { item: props.item } }
-
-
                                 addFavorite(detailObject)
                             }
                             else {

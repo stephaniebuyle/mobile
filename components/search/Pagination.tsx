@@ -1,4 +1,4 @@
-import { View, StyleSheet, Pressable, Text } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import * as React from 'react'
 import { PaginationProps } from "../../types";
 import { Entypo } from "@expo/vector-icons";
@@ -8,11 +8,11 @@ const Pagination = (props: PaginationProps) => {
     const displayPrev = () => {
         if (props.page > 1) {
             return (
-            <Pressable
-                style={styles.pagination}
-                onPress={(event) => props.callbackSetPage(props.page - 1)}>
-                <Entypo name="arrow-with-circle-left" size={30} color="purple" />
-            </Pressable>)
+                <Pressable
+                    style={styles.pagination}
+                    onPress={(event) => props.callbackSetPage(props.page - 1)}>
+                    <Entypo name="arrow-with-circle-left" size={30} color="purple" />
+                </Pressable>)
         }
     }
 
@@ -25,7 +25,7 @@ const Pagination = (props: PaginationProps) => {
                 </Pressable>)
         }
     }
-    
+
     return (
         <View style={styles.container}>
             {displayPrev()}
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     pagination: {
-        
+
         borderWidth: 1,
         borderRadius: 10,
         alignSelf: 'center',

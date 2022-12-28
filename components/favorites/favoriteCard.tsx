@@ -1,13 +1,7 @@
 import { Pressable, Image, View, Text, StyleSheet } from "react-native";
-import { CardProps, Detail } from "../../types";
+import { FavoriteCardProps } from "../../types";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
-
-interface FavoriteCardProps {
-    favorite: Detail,
-    navigation: any
-}
 
 const FavoriteCard = (props: FavoriteCardProps) => {
 
@@ -33,8 +27,6 @@ const FavoriteCard = (props: FavoriteCardProps) => {
     )
    
 }
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

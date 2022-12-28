@@ -1,15 +1,10 @@
 import React from 'react'
-import { RouteProp } from "@react-navigation/native"
-import { useContext } from "react"
 import { View, Text } from "react-native"
+import { DetailDescriptionProps } from '../../types'
 
-interface DetailDescriptionProps {
-    data: RouteProp<any>;
-}
+const DetailDescription = ({ data }: DetailDescriptionProps) => {
 
-const DetailDescription = ({ data } : DetailDescriptionProps) => {
-
-    return(
+    return (
         <View>
             <Text>
                 {data.params?.item.title}
@@ -23,6 +18,7 @@ const DetailDescription = ({ data } : DetailDescriptionProps) => {
         </View>
     )
 }
+
 
 export default DetailDescription;
 

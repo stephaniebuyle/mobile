@@ -1,4 +1,4 @@
-import { FlatList } from "react-native"
+import { FlatList, StyleSheet } from "react-native"
 import React, { useContext } from "react";
 import { FavoritesContext } from "../Context";
 import { useNavigation } from "@react-navigation/native";
@@ -13,13 +13,18 @@ const FavoritesScreen = () => {
 
     return (
         <FlatList
-            style={{ zIndex: -99 }}
+            style={styles.list}
             data={favorites}
             keyExtractor={({ key }, index) => key}
             renderItem={({ item }) => (
-                <FavoriteCard key={item.params.item.id} detail={item} navigation={navigation} />)}
+                <FavoriteCard key={item.params.item.id} detail={item} navigation={navigation} />
+            )}
         />
     )
 }
-
+const styles = StyleSheet.create({
+    list: {
+        zIndex: -99 
+    },
+});
 export default FavoritesScreen;

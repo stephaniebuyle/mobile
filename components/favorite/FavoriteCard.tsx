@@ -6,8 +6,8 @@ import { FavoritesContext } from "../Context";
 
 const FavoriteCard = (props: FavoriteCardProps) => {
 
-
     const { favorites, removeFavorite } = useContext(FavoritesContext);
+
     return (
 
         <View style={styles.container}>

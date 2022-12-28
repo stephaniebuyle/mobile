@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {  View, Text, Platform, Alert, Pressable } from 'react-native';
+import { View, Text, Platform, Alert, Pressable } from 'react-native';
 import * as Calendar from 'expo-calendar';
-import { Expo } from '../../types';
+import { AgendaProps, EventDetails } from '../../types';
 import CalendarPicker from 'react-native-calendar-picker';
 
-interface AgendaProps {
-  expo: Expo;
-}
-
-interface EventDetails {
-  title: string,
-  startDate: Date,
-  endDate: Date
-}
-
-const DatePicker = ({expo}: AgendaProps) => {
+const DatePicker = ({ expo }: AgendaProps) => {
 
   const [selectedStartDate, setSelectedStartDate] = useState<any>();
   const [calendars, setCalendars] = useState<Calendar.Calendar[]>([]);
@@ -38,35 +28,35 @@ const DatePicker = ({expo}: AgendaProps) => {
   }
 
   const getDefaultCalendarId = async () => {
-    if(Platform.OS === 'ios'){
+    if (Platform.OS === 'ios') {
       const defaultCalendar = await Calendar.getDefaultCalendarAsync();
-        if(defaultCalendar !== undefined){
-          return defaultCalendar.id;
-        }
+      if (defaultCalendar !== undefined) {
+        return defaultCalendar.id;
+      }
     } else {
       const calendarId: Calendar.Calendar | undefined = calendars.find(e => e.source.name === 'Expo Calendar');
-        if(calendarId == undefined){
-          try{
-            const calendarId: string = await createCalendar();
-            return calendarId;
-          } catch (e) {
-            console.log(e);
-            Alert.alert('Het is niet gelukt het event toe te voegen aan je agenda')
-          }
-        } else {
-          return calendarId.id;
+      if (calendarId == undefined) {
+        try {
+          const calendarId: string = await createCalendar();
+          return calendarId;
+        } catch (e) {
+          console.log(e);
+          Alert.alert('Het is niet gelukt het event toe te voegen aan je agenda')
         }
+      } else {
+        return calendarId.id;
       }
+    }
   }
 
-  const createCalendar = async () => {  
+  const createCalendar = async () => {
     const defaultCalendarSource: Calendar.Source =
       Platform.OS === 'ios'
         ? await getDefaultCalendarSource()
-        : { isLocalAccount: true, type:'Expo Calendar', name: 'Expo Calendar' };
+        : { isLocalAccount: true, type: 'Expo Calendar', name: 'Expo Calendar' };
 
-      console.log('default calendar Source');
-      console.log(defaultCalendarSource);
+    console.log('default calendar Source');
+    console.log(defaultCalendarSource);
 
     const newCalendarID = await Calendar.createCalendarAsync({
       title: 'Expo Calendar',
@@ -77,11 +67,11 @@ const DatePicker = ({expo}: AgendaProps) => {
       ownerAccount: 'personal',
       accessLevel: Calendar.CalendarAccessLevel.OWNER,
     });
-  
+
     console.log(`Your new calendar ID is: ${newCalendarID}`);
     const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
     console.log(calendars);
-  
+
     return newCalendarID;
   }
 
@@ -98,15 +88,15 @@ const DatePicker = ({expo}: AgendaProps) => {
     }
 
     const eventIdInCalendar = await Calendar.createEventAsync(calendarId, eventDetails);
-    if(Platform.OS == 'android'){
+    if (Platform.OS == 'android') {
       Calendar.openEventInCalendar(eventIdInCalendar);
     }
   }
 
   const addEvent = () => {
-    getDefaultCalendarId().then((calendarId) =>{
-      if(calendarId !== undefined){
-        try{
+    getDefaultCalendarId().then((calendarId) => {
+      if (calendarId !== undefined) {
+        try {
           addEventToCalendar(calendarId);
           Alert.alert("Toegevoegd aan je agenda!");
         } catch (e) {
@@ -118,16 +108,16 @@ const DatePicker = ({expo}: AgendaProps) => {
     })
   }
 
-  return(
+  return (
     <View>
-        <Text>{expo.title}</Text>
-        <CalendarPicker onDateChange={setSelectedStartDate} />
-        <Text></Text>
-        <Pressable
-          onPress={addEvent}
-        >
-          {selectedStartDate ? <Text>Zet in agenda</Text> : <Text>Kies een datum</Text>}
-        </Pressable>
+      <Text>{expo.title}</Text>
+      <CalendarPicker onDateChange={setSelectedStartDate} />
+      <Text></Text>
+      <Pressable
+        onPress={addEvent}
+      >
+        {selectedStartDate ? <Text>Zet in agenda</Text> : <Text>Kies een datum</Text>}
+      </Pressable>
     </View>
   )
 }
