@@ -9,6 +9,7 @@ import FavoritesTab from './components/tabs/FavoritesTab';
 import { FavoritesContext } from './components/Context';
 import AgendaTab from './components/tabs/AgendaTab';
 
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {

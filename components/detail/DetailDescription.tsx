@@ -1,3 +1,4 @@
+import React from 'react'
 import { RouteProp } from "@react-navigation/native"
 import { useContext } from "react"
 import { View, Text } from "react-native"
