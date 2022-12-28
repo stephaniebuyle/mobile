@@ -11,34 +11,27 @@ interface DetailToFavoritesProps {
 
 const DetailToFavorites = ({ data } : DetailToFavoritesProps ) => {
 
-    const { favorites, setFavorites } = useContext(FavoritesContext);
-
-    useEffect(()=>{
-       saveFavorites(favorites); 
-    }, [favorites])
-
-    const saveFavorites = async (favorites: Detail[] ) => {
-        await AsyncStorage.setItem("favorites", JSON.stringify(favorites));
-    }
-
-    const addFavorite = async ( data : Detail) => {
-        if((favorites.findIndex(favorite => favorite.key == data.key)) <= -1){
-            setFavorites([...favorites, data]);
-        } else {
-            const array = favorites.filter(favorite => favorite.key !== data.key);
-            setFavorites(array);
-        }
-    }
+    const { favorites, setFavorites, addFavorite, isFavorite, removeFavorite } = useContext(FavoritesContext);
 
     return(
         <Pressable
-            onPress={() => addFavorite(data)}
+            onPress={() => {
+                if(!isFavorite(data.params.item.id)){
+                    addFavorite(data)
+                }
+                else{
+                    removeFavorite(data.params.item.id)
+                }
+                }
+            }
             style={{ backgroundColor: "lightblue", padding: 5, margin: 5}}
         >
-            {favorites.find(favorite => favorite.key == data.key) ? <AntDesign name="heart" size={24} color="red" /> : <AntDesign name="heart" size={24} color="black" /> }
+            {isFavorite(data.params.item.id) ? <AntDesign name="heart" size={24} color="purple" /> : <AntDesign name="heart" size={24} color="black" /> }
         </Pressable>
     )
 }
+
+
 
 export default DetailToFavorites;
 

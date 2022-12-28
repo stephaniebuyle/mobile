@@ -1,16 +1,24 @@
-import { View, Text } from "react-native"
+import { FlatList } from "react-native"
 import React, { useContext } from "react";
 import { FavoritesContext } from "../Context";
+import { useNavigation } from "@react-navigation/native";
+import FavoriteCard from "../favorite/FavoriteCard";
 
 const FavoritesTab = () => {
 
     const { favorites, setFavorites } = useContext(FavoritesContext);
-    
-    
-    return(
-        <View>
-            {favorites.map((id) => <Text key={id.params.item.id}>{id.params.item.title}</Text>)}
-        </View>
+    const navigation: any = useNavigation();
+
+    console.log(favorites.length)
+
+    return (
+        <FlatList
+            style={{ zIndex: -99 }}
+            data={favorites}
+            keyExtractor={({ key }, index) => key}
+            renderItem={({ item }) => (
+                <FavoriteCard key={item.params.item.id} detail={item} navigation={navigation} />)}
+        />
     )
 }
 
