@@ -1,25 +1,19 @@
-import { FlatList } from "react-native"
-import React, { useContext } from "react";
-import { FavoritesContext } from "../Context";
-import { useNavigation } from "@react-navigation/native";
-import FavoriteCard from "../favorite/FavoriteCard";
+import DetailScreen from "../screens/DetailScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import FavoritesScreen from "../screens/FavoritesScreen";
 
-const FavoritesTab = () => {
+const Stack = createNativeStackNavigator();
 
-    const { favorites, setFavorites } = useContext(FavoritesContext);
-    const navigation: any = useNavigation();
-
-    console.log(favorites.length)
-
+const SearchTab = () => {
     return (
-        <FlatList
-            style={{ zIndex: -99 }}
-            data={favorites}
-            keyExtractor={({ key }, index) => key}
-            renderItem={({ item }) => (
-                <FavoriteCard key={item.params.item.id} detail={item} navigation={navigation} />)}
-        />
+        <NavigationContainer independent={true}>
+            <Stack.Navigator>
+                <Stack.Screen name="Favorieten" component={FavoritesScreen} />
+                <Stack.Screen name="Detail" component={DetailScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
 
-export default FavoritesTab;
+export default SearchTab;
