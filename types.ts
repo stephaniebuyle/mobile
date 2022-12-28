@@ -69,6 +69,11 @@ export interface ItemProps{
     "productionPlaces": string[]
 }
 
+export interface FavoriteCardProps {
+    detail: Detail, 
+    navigation: any 
+}
+
 export type Detail = {
     "key": string, 
     "params": {

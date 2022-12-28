@@ -1,22 +1,22 @@
 import { Pressable, Image, View, Text, StyleSheet } from "react-native";
-import { CardProps } from "../../types";
-import { MaterialIcons } from "@expo/vector-icons";
+import { FavoriteCardProps } from "../../types";
+import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 
-const SearchCard = (props: CardProps) => {
+const FavoriteCard = (props: FavoriteCardProps) => {
     return (
         <Pressable
-            onPress={() => { props.navigation.navigate("Detail", { item: props.item }) }
+            onPress={() => { props.navigation.navigate("Detail", { item: props.detail.params.item }) }
             }
         >
             <View style={styles.container}>
                 <Image
                     style={styles.image}
-                    source={{ uri: props.item.webImage?.url }}
+                    source={{ uri: props.detail.params.item.webImage?.url }}
                 />
                 <View style={styles.cardInfo}>
-                    <Text style={styles.text}>{props.item.title + ' - ' + props.item.principalOrFirstMaker}</Text>
-                    <MaterialIcons styles={styles.heart} name="favorite-border" size={15} color="purple" />
+                    <Text style={styles.text}>{props.detail.params.item.title + ' - ' + props.detail.params.item.principalOrFirstMaker}</Text>
+                    <AntDesign styles={styles.delete} name="delete" size={15} color="purple" />
                 </View>
             </View>
         </Pressable>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingRight: 20
     },
-    heart: {
+    delete: {
         flex: 1
     },
     image: {
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     }
 });
-export default SearchCard; 
+export default FavoriteCard; 

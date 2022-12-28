@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import SearchTab from './components/tabs/SearchTab';
 import FavoritesTab from './components/tabs/FavoritesTab';
-import { FavoritesContext } from './components/Context';
+import { FavoritesContext, FavoritesProvider } from './components/Context';
 import AgendaTab from './components/tabs/AgendaTab';
 
 
@@ -14,22 +14,14 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
 
-  const [favorites, setFavorites] = useState<any[]>([]);
+  //const [favorites, setFavorites] = useState<any[]>([]);
 
-  useEffect(() => {
-    getFavorites();
-  }, []);
+ 
 
-  const getFavorites = async () => {
-    const value: string | null = await AsyncStorage.getItem("favorites");
-    if(value !== null){
-      setFavorites(JSON.parse(value));
-      console.log("uit async" + value)
-    }
-  };
+
 
   return (
-    <FavoritesContext.Provider value={{favorites: favorites, setFavorites: setFavorites}}>
+    <FavoritesProvider >
       <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen name="Home" component={HomeTab} options={{
@@ -49,7 +41,7 @@ export default function App() {
           }}/>  
         </Tab.Navigator>
     </NavigationContainer>
-  </FavoritesContext.Provider>
+  </FavoritesProvider>
   );
 };
 
