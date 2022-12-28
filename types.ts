@@ -133,12 +133,6 @@ export interface DetailToFavoritesProps {
     data: Detail;
 }
 
-/* interface FavoriteCard */ 
-export interface FavoriteCardProps {
-    favorite: Detail,
-    navigation: any
-}
-
 /* Expo component */
 export type Expo = {
     startDate: Date,
