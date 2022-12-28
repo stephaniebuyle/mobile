@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  View, Text, Platform, Alert, Pressable, StyleSheet } from 'react-native';
+import {  View, Text, Platform, Alert, Pressable } from 'react-native';
 import * as Calendar from 'expo-calendar';
 import { Expo } from '../../types';
 import CalendarPicker from 'react-native-calendar-picker';
@@ -17,28 +17,79 @@ interface EventDetails {
 const DatePicker = ({expo}: AgendaProps) => {
 
   const [selectedStartDate, setSelectedStartDate] = useState<any>();
+  const [calendars, setCalendars] = useState<Calendar.Calendar[]>([]);
 
   useEffect(() => {
     (async () => {
       const { status } = await Calendar.requestCalendarPermissionsAsync();
       if (status === 'granted') {
-        const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
+        setCalendars(await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT));
       }
     })();
   }, []);
-  
+
   const getDefaultCalendarSource = async () => {
-    const defaultCalendar = await Calendar.getDefaultCalendarAsync();
-    console.log(defaultCalendar); 
-    return defaultCalendar.id;
+    const defaultCalendars = calendars.filter(
+      (each) => each.source.name === 'Default'
+    );
+    return defaultCalendars.length
+      ? defaultCalendars[0].source
+      : calendars[0].source;
   }
 
-  const addEvent = async (calendarId: string) => {
+  const getDefaultCalendarId = async () => {
+    if(Platform.OS === 'ios'){
+      const defaultCalendar = await Calendar.getDefaultCalendarAsync();
+        if(defaultCalendar !== undefined){
+          return defaultCalendar.id;
+        }
+    } else {
+      const calendarId: Calendar.Calendar | undefined = calendars.find(e => e.source.name === 'Expo Calendar');
+        if(calendarId == undefined){
+          try{
+            const calendarId: string = await createCalendar();
+            return calendarId;
+          } catch (e) {
+            console.log(e);
+            Alert.alert('Het is niet gelukt het event toe te voegen aan je agenda')
+          }
+        } else {
+          return calendarId.id;
+        }
+      }
+  }
 
+  const createCalendar = async () => {  
+    const defaultCalendarSource: Calendar.Source =
+      Platform.OS === 'ios'
+        ? await getDefaultCalendarSource()
+        : { isLocalAccount: true, type:'Expo Calendar', name: 'Expo Calendar' };
+
+      console.log('default calendar Source');
+      console.log(defaultCalendarSource);
+
+    const newCalendarID = await Calendar.createCalendarAsync({
+      title: 'Expo Calendar',
+      color: 'blue',
+      entityType: Calendar.EntityTypes.EVENT,
+      source: defaultCalendarSource,
+      name: 'internalCalendarName',
+      ownerAccount: 'personal',
+      accessLevel: Calendar.CalendarAccessLevel.OWNER,
+    });
+  
+    console.log(`Your new calendar ID is: ${newCalendarID}`);
+    const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
+    console.log(calendars);
+  
+    return newCalendarID;
+  }
+
+  const addEventToCalendar = async (calendarId: string) => {
     const startEventDate: Date = new Date(selectedStartDate);
     const endEventDate: Date = new Date(selectedStartDate);
-    startEventDate.setHours(10);
-    endEventDate.setHours(18);
+    startEventDate.setHours(9);
+    endEventDate.setHours(17);
 
     let eventDetails: EventDetails = {
       title: "Expositie in het rijksmuseum " + expo.title,
@@ -52,28 +103,28 @@ const DatePicker = ({expo}: AgendaProps) => {
     }
   }
 
-  const addEventToCalendar = () => {
-      getDefaultCalendarSource().then((calendarId) =>{
-        if(calendarId !== undefined){
-          try{
-            addEvent(calendarId);
-            Alert.alert("Toegevoegd aan je agenda!");
-          } catch (e) {
-            console.log(e)
-          }
-        } else {
-          Alert.alert("Het is niet gelukt om dit event toe te voegen aan je agenda")
+  const addEvent = () => {
+    getDefaultCalendarId().then((calendarId) =>{
+      if(calendarId !== undefined){
+        try{
+          addEventToCalendar(calendarId);
+          Alert.alert("Toegevoegd aan je agenda!");
+        } catch (e) {
+          console.log(e)
         }
-      })
+      } else {
+        Alert.alert("Het is niet gelukt om dit event toe te voegen aan je agenda")
+      }
+    })
   }
 
   return(
     <View>
-        <Text style={styles.expoTitle}>{expo.title}</Text>
+        <Text>{expo.title}</Text>
         <CalendarPicker onDateChange={setSelectedStartDate} />
         <Text></Text>
         <Pressable
-          onPress={addEventToCalendar}
+          onPress={addEvent}
         >
           {selectedStartDate ? <Text>Zet in agenda</Text> : <Text>Kies een datum</Text>}
         </Pressable>
@@ -81,10 +132,5 @@ const DatePicker = ({expo}: AgendaProps) => {
   )
 }
 
-const styles = StyleSheet.create({
-  expoTitle: {
-    textTransform: 'uppercase'
-  }
-})
 
 export default DatePicker;
