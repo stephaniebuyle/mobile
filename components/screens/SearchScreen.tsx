@@ -64,16 +64,13 @@ const SearchScreen = () => {
         <View style={styles.container}>
 
             <SearchBar callbackSetSearch={handleSetSearch} callbackSetField={handleSetField} callbackRunSearch={handleRunSearch} fieldValue={searchField} searchValue={searchValue} />
-            <SafeAreaView style={styles.container}>
-                {loading ?
-                    <ActivityIndicator size="large" color="purple" /> :
-                    <View>
-                        <Text style={styles.text}>Resultaten: {collectionData?.count}</Text>
-                        <SearchResults navigation={navigation} collectionData={collectionData} />
-                        <Pagination callbackSetPage={setPage} count={collectionData?.count} page={page} />
-                    </View>
-                }
+
+            <Text style={styles.text}>Resultaten: {collectionData?.count}</Text>
+            <SafeAreaView>
+                {loading ? <ActivityIndicator size="large" color="purple" /> : <></>}
             </SafeAreaView>
+            <SearchResults navigation={navigation} collectionData={collectionData} />
+            <Pagination callbackSetPage={setPage} count={collectionData?.count} page={page} />
 
         </View>
 
@@ -88,5 +85,8 @@ const styles = StyleSheet.create({
     text: {
         padding: 15
     },
+    pagination: {
+        flex: 1
+    }
 });
 export default SearchScreen;

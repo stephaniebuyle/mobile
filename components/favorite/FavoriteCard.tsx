@@ -1,25 +1,40 @@
 import { Pressable, Image, View, Text, StyleSheet } from "react-native";
 import { FavoriteCardProps } from "../../types";
 import { AntDesign } from "@expo/vector-icons";
-import React from "react";
+import React, { useContext } from "react";
+import { FavoritesContext } from "../Context";
 
 const FavoriteCard = (props: FavoriteCardProps) => {
+
+
+    const { favorites, removeFavorite } = useContext(FavoritesContext);
     return (
-        <Pressable
-            onPress={() => { props.navigation.navigate("Detail", { item: props.detail.params.item }) }
-            }
-        >
-            <View style={styles.container}>
+
+        <View style={styles.container}>
+            <Pressable
+                onPress={() => { props.navigation.navigate("Detail", { item: props.detail.params.item }) }
+                }
+            >
                 <Image
                     style={styles.image}
                     source={{ uri: props.detail.params.item.webImage?.url }}
-                />
-                <View style={styles.cardInfo}>
+                /></Pressable>
+            <View style={styles.cardInfo}>
+                <Pressable
+                    onPress={() => { props.navigation.navigate("Detail", { item: props.detail.params.item }) }
+                    }
+                >
                     <Text style={styles.text}>{props.detail.params.item.title + ' - ' + props.detail.params.item.principalOrFirstMaker}</Text>
+                </Pressable>
+                <Pressable
+                    onPress={() => {removeFavorite(props.detail.params.item.id) }
+                    }
+                >
                     <AntDesign styles={styles.delete} name="delete" size={15} color="purple" />
-                </View>
+                </Pressable>
             </View>
-        </Pressable>
+        </View>
+
     )
 }
 const styles = StyleSheet.create({
@@ -30,7 +45,7 @@ const styles = StyleSheet.create({
         minHeight: 80,
         backgroundColor: 'white',
         alignItems: 'center',
-        marginBottom: 15,
+        marginTop: 15,
         paddingRight: 15
     },
     cardInfo: {

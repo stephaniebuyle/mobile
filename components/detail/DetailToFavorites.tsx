@@ -11,17 +11,22 @@ interface DetailToFavoritesProps {
 
 const DetailToFavorites = ({ data } : DetailToFavoritesProps ) => {
 
-    const { favorites, setFavorites, addFavorite } = useContext(FavoritesContext);
-
-  
- 
+    const { favorites, setFavorites, addFavorite, isFavorite, removeFavorite } = useContext(FavoritesContext);
 
     return(
         <Pressable
-            onPress={() => addFavorite(data)}
+            onPress={() => {
+                if(!isFavorite(data.params.item.id)){
+                    addFavorite(data)
+                }
+                else{
+                    removeFavorite(data.params.item.id)
+                }
+                }
+            }
             style={{ backgroundColor: "lightblue", padding: 5, margin: 5}}
         >
-            {favorites.find(favorite => favorite.params.item.id == data.params.item.id) ? <AntDesign name="heart" size={24} color="red" /> : <AntDesign name="heart" size={24} color="black" /> }
+            {isFavorite(data.params.item.id) ? <AntDesign name="heart" size={24} color="purple" /> : <AntDesign name="heart" size={24} color="black" /> }
         </Pressable>
     )
 }
