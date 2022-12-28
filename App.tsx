@@ -33,6 +33,7 @@ export default function App() {
               tabBarIcon: () => <AntDesign name="search1" size={24} color="black" />
           }}/>
           <Tab.Screen name="Favorieten" component={FavoritesTab} options={{
+              headerShown: false,
               tabBarIcon: () => <AntDesign name="heart" size={24} color="black" />
           }}/>
           <Tab.Screen name="Agenda" component={AgendaTab} options={{
