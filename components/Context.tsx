@@ -1,4 +1,3 @@
-import { RouteProp } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { AsyncStorage } from "react-native";
 import { Detail } from "../types";
@@ -20,7 +19,7 @@ export const FavoritesContext = React.createContext<IFavoritesContext>(
     setFavorites: (favorites: Detail[]) => { },
     addFavorite: (favorite: Detail) => { },
     removeFavorite: (id: string) => { },
-    isFavorite: (id: string) => { return false}
+    isFavorite: (id: string) => { return false }
   }
 );
 
@@ -28,9 +27,9 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
   const [favorites, setFavorites] = React.useState<Detail[]>([]);
 
   useEffect(() => {
-    
+
     getFavorites();
-    
+
   }, []);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
     }
   };
 
-  const isFavorite = (id: string) : boolean => {
+  const isFavorite = (id: string): boolean => {
     return favorites.some(f => f.params.item.id === id);
   }
 

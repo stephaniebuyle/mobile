@@ -4,7 +4,7 @@ import { SearchResultProps } from "../../types"
 import SearchCard from "./SearchCard"
 
 const SearchResults = (props: SearchResultProps) => {
-    
+
     const displayResults = () => {
 
         // console.log(`result: ${JSON.stringify(props.collectionData)}`);
@@ -26,7 +26,6 @@ const SearchResults = (props: SearchResultProps) => {
 
     return (
         displayResults()
-
     )
 }
 const styles = StyleSheet.create({

@@ -1,11 +1,11 @@
 import { Pressable, Image, View, Text, StyleSheet } from "react-native";
 import { CardProps, Detail } from "../../types";
-import { MaterialIcons, AntDesign} from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import React, { useContext } from "react";
 import { FavoritesContext } from "../Context";
 
 const SearchCard = (props: CardProps) => {
-    
+
     const { favorites, setFavorites, addFavorite, isFavorite, removeFavorite } = useContext(FavoritesContext);
 
     return (
@@ -21,23 +21,23 @@ const SearchCard = (props: CardProps) => {
                 <View style={styles.cardInfo}>
                     <Text style={styles.text}>{props.item.title + ' - ' + props.item.principalOrFirstMaker}</Text>
                     <Pressable
-            onPress={() => {
-                if(!isFavorite(props.item.id)){
-                    let rand = new Date().getTime().toString();
-                    let detailObject : Detail = {key : rand, params : {item : props.item}}
+                        onPress={() => {
+                            if (!isFavorite(props.item.id)) {
+                                let rand = new Date().getTime().toString();
+                                let detailObject: Detail = { key: rand, params: { item: props.item } }
 
 
-                    addFavorite(detailObject)
-                }
-                else{
-                    removeFavorite(props.item.id)
-                }
-                }
-            }
-           
-        >
-            {isFavorite(props.item.id) ? <MaterialIcons styles={styles.heart} name="favorite" size={15} color="purple" /> : <MaterialIcons styles={styles.heart} name="favorite-border" size={15} color="purple" /> }
-                    
+                                addFavorite(detailObject)
+                            }
+                            else {
+                                removeFavorite(props.item.id)
+                            }
+                        }
+                        }
+
+                    >
+                        {isFavorite(props.item.id) ? <MaterialIcons styles={styles.heart} name="favorite" size={15} color="purple" /> : <MaterialIcons styles={styles.heart} name="favorite-border" size={15} color="purple" />}
+
                     </Pressable>
                 </View>
             </View>
@@ -76,4 +76,5 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     }
 });
+
 export default SearchCard; 

@@ -25,7 +25,7 @@ const Pagination = (props: PaginationProps) => {
                 </Pressable>)
         }
     }
-
+    
     return (
         <View style={styles.container}>
             {displayPrev()}

@@ -27,7 +27,7 @@ const FavoriteCard = (props: FavoriteCardProps) => {
                     <Text style={styles.text}>{props.detail.params.item.title + ' - ' + props.detail.params.item.principalOrFirstMaker}</Text>
                 </Pressable>
                 <Pressable
-                    onPress={() => {removeFavorite(props.detail.params.item.id) }
+                    onPress={() => { removeFavorite(props.detail.params.item.id) }
                     }
                 >
                     <AntDesign styles={styles.delete} name="delete" size={15} color="purple" />
