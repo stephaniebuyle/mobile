@@ -51,7 +51,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#eae4ed',
         alignItems: 'center',
         marginBottom: 15,
-        paddingRight: 15
+        paddingRight: 15,
+        shadowColor: '#171717',
+        shadowOffset: {width: 1, height: 1},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3,
+        
+        
     },
     cardInfo: {
         flexDirection: 'row',

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { View, TextInput, StyleSheet, TouchableOpacity} from "react-native";
+import { Text, View, TextInput, StyleSheet, TouchableOpacity} from "react-native";
 import { SearchProps } from "../../types";
 import { FontAwesome } from '@expo/vector-icons';
-import { Button, Menu, Provider } from 'react-native-paper';
+import { Button, Divider, Menu, Provider } from 'react-native-paper';
 
 const SearchBar = (props: SearchProps) => {
 
@@ -28,12 +28,17 @@ const SearchBar = (props: SearchProps) => {
             <View style={styles.container}>
                 <Provider>
                     <View>
-                        <Menu
+                        <Menu style={styles.menu}
                             visible={visible}
                             onDismiss={closeMenu}
-                            anchor={<Button onPress={openMenu}>{arr.get(props.fieldValue)}</Button>}>
+                            
+                            anchor={<Button style={styles.anchor}onPress={openMenu}>{arr.get(props.fieldValue)}</Button>}>
+                            <Text style={styles.menuItems}>Kies zoekveld:</Text>
+                            
                             <Menu.Item onPress={() => { handleChangeSelect("q") }} title="Alles" />
+
                             <Menu.Item onPress={() => { handleChangeSelect("involvedMaker") }} title="Artiest" />
+
                             <Menu.Item onPress={() => { handleChangeSelect("type") }} title="Type" />
                             <Menu.Item onPress={() => { handleChangeSelect("technique") }} title="Techniek" />
                             <Menu.Item onPress={() => { handleChangeSelect("material") }} title="Materiaal" />
@@ -63,6 +68,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 0,
     },
+    menuItems: {
+        borderBottomWidth: 1, 
+        paddingBottom: 9,
+        borderBottomColor: 'gray',
+        textAlign: "center", 
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
+    menu: { 
+        margin:0,
+        padding:0
+       
+    },
+    anchor:
+    {
+        borderRadius: 1,
+       
+    }, 
     picker: {
         height: 50,
         width: 50,
@@ -89,7 +112,7 @@ const styles = StyleSheet.create({
     search: {
         width: 180,
         flex: 4,
-        paddingLeft: 8
+        paddingLeft: 15
     }
 });
 

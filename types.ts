@@ -122,11 +122,13 @@ export interface Dimensions {
     "value": string
 }
 
+/* Interface voor de cards */ 
 export interface CardProps {
     item: ArtObject;
     navigation: any;
 }
 
+/* Interface Pagination */ 
 export interface PaginationProps {
     callbackSetPage: (value: number) => void;
     count: number,
@@ -158,11 +160,24 @@ export interface ItemProps{
     "productionPlaces": string[]
 }
 
+/* interface FavoriteCard */ 
 export interface FavoriteCardProps {
     detail: Detail, 
     navigation: any 
 }
 
+/* interfaces datepicker */
+export interface AgendaProps {
+    expo: Expo;
+  }
+  
+export interface EventDetails {
+    title: string,
+    startDate: Date,
+    endDate: Date
+  }
+
+/* interface SearchCard */
 export type Detail = {
     "key": string, 
     "params": {
@@ -193,22 +208,7 @@ export type Detail = {
         }
     }
 }
-
-export interface DetailImageProps {
-  uri: string
-}
-
-/* interfaces datepicker */
-export interface AgendaProps {
-    expo: Expo;
-  }
   
-export interface EventDetails {
-    title: string,
-    startDate: Date,
-    endDate: Date
-  }
-
 /* interface DetailDescription */ 
 export interface DetailDescriptionProps {
     data?: ArtObjectDetail;
@@ -219,6 +219,12 @@ export interface DetailToFavoritesProps {
     data: Detail;
 }
 
+/* inerface DetailImage */ 
+
+export interface DetailImageProps {
+    uri: string
+  }
+  
 
 /* Expo component */
 export type Expo = {

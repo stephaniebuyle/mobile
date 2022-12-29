@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, Image, StyleSheet } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 const ExpoDetailScreen = ({ expo }: { expo: any }) => {
 
@@ -29,7 +30,7 @@ const ExpoDetailScreen = ({ expo }: { expo: any }) => {
                     { navigation.navigate("Planner", {expo: expo})}
                 }
             >
-                <Text style={styles.addToAgendaText}>Zet in agenda</Text>
+                <Text style={styles.addToAgendaText}><FontAwesome name="calendar-plus-o" size={17} color="white" />  Zet in agenda</Text>
             </Pressable>
             </View>
         </View>

@@ -9,31 +9,28 @@ const FavoriteCard = (props: FavoriteCardProps) => {
     const { favorites, removeFavorite } = useContext(FavoritesContext);
 
     return (
+        <Pressable
+            onPress={() => { props.navigation.navigate("Detail", { item: props.detail.params.item }) }
+            }
+        >
+            <View style={styles.container}>
 
-        <View style={styles.container}>
-            <Pressable
-                onPress={() => { props.navigation.navigate("Detail", { item: props.detail.params.item }) }
-                }
-            >
                 <Image
                     style={styles.image}
                     source={{ uri: props.detail.params.item.webImage?.url }}
-                /></Pressable>
-            <View style={styles.cardInfo}>
-                <Pressable
-                    onPress={() => { props.navigation.navigate("Detail", { item: props.detail.params.item }) }
-                    }
-                >
+                />
+                <View style={styles.cardInfo}>
                     <Text style={styles.text}>{props.detail.params.item.title + ' - ' + props.detail.params.item.principalOrFirstMaker}</Text>
-                </Pressable>
-                <Pressable
-                    onPress={() => { removeFavorite(props.detail.params.item.id) }
-                    }
-                >
-                    <AntDesign styles={styles.delete} name="delete" size={17} color="purple" />
-                </Pressable>
+
+                    <Pressable
+                        onPress={() => { removeFavorite(props.detail.params.item.id) }
+                        }
+                    >
+                        <AntDesign styles={styles.delete} name="delete" size={17} color="purple" />
+                    </Pressable>
+                </View>
             </View>
-        </View>
+        </Pressable>
 
     )
 }
@@ -46,7 +43,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#eae4ed',
         alignItems: 'center',
         marginTop: 15,
-        paddingRight: 15, 
+        paddingRight: 15,
+        shadowColor: '#171717',
+        shadowOffset: {width: 1, height: 1},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3,
     },
     cardInfo: {
         flexDirection: 'row',
