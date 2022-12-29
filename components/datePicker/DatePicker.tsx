@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Platform, Alert, Pressable } from 'react-native';
+import {  View, Text, Platform, Alert, Pressable, StyleSheet } from 'react-native';
 import * as Calendar from 'expo-calendar';
 import { AgendaProps, EventDetails } from '../../types';
 import CalendarPicker from 'react-native-calendar-picker';
@@ -108,19 +108,35 @@ const DatePicker = ({ expo }: AgendaProps) => {
     })
   }
 
-  return (
-    <View>
-      <Text>{expo.title}</Text>
-      <CalendarPicker onDateChange={setSelectedStartDate} />
-      <Text></Text>
-      <Pressable
-        onPress={addEvent}
-      >
-        {selectedStartDate ? <Text>Zet in agenda</Text> : <Text>Kies een datum</Text>}
-      </Pressable>
+  return(
+    <View style={styles.container}>
+        <CalendarPicker onDateChange={setSelectedStartDate} />
+        <Pressable
+          style={styles.addToAgenda}
+          onPress={addEvent}
+        >
+          {selectedStartDate ? <Text style={styles.addToAgendaText}>Zet in agenda</Text> : <Text style={styles.addToAgendaText}>Kies een datum</Text>}
+        </Pressable>
+
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container:{
+    paddingTop: 20,
+    alignItems: 'center'
+  },
+  addToAgenda: {
+    marginTop: 20,
+    backgroundColor: 'purple',
+    padding: 15,
+    borderRadius: 10
+  },
+  addToAgendaText: {
+      color: 'white'
+  }
+})
 
 
 export default DatePicker;

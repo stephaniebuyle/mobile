@@ -10,7 +10,7 @@ const AgendaTab = () => {
     return (
         <NavigationContainer independent={true}>
             <Stack.Navigator>
-                <Stack.Screen name="Agenda" component={AgendaScreen} />
+                <Stack.Screen name="Exposities in het Rijksmuseum" component={AgendaScreen} />
                 <Stack.Screen name="Expo" component={ExpoScreen} />
             </Stack.Navigator>
         </NavigationContainer>
