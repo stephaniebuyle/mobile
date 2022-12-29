@@ -1,24 +1,20 @@
 import { useNavigation } from "@react-navigation/native";
 import { FlatList, Pressable, View, Image, Text, StyleSheet } from "react-native";
+import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
 import { Expo } from "../../types";
 
 const data: Expo[] = require('../../ExpoData.json');
 
 const AgendaScreen = () => {
-
-    data.forEach(e => (
-        e.startDate = new Date(e.startDate),
-        e.endDate = new Date(e.endDate)
-    ))
     
     const expos: Expo[] = data;
-
     const navigation: any = useNavigation();
     
     return(
         <View>
             <FlatList
                 data={expos}
+                keyExtractor={({ title }) => title}
                 renderItem={({item}) => (
                     <Pressable
                         onPress={() => {
@@ -37,9 +33,7 @@ const AgendaScreen = () => {
                                 <Text style={styles.listItemTitle}>{item.title}</Text>
                                 <Text style={styles.listItemSubtitle}>{item.subtitle}</Text>
                                 <View style={styles.listItemDates}>
-                                    <Text>{item.startDate.toLocaleDateString('nl-NL')}</Text>
-                                    <Text>   -   </Text>
-                                    <Text>{item.endDate.toLocaleDateString('nl-NL')}</Text>
+                                    <Text>{`${item.startDate.toString().slice(0,10)}` + '  -  ' + `${item.endDate.toString().slice(0,10)}`}</Text>
                                 </View>
                             </View>
                         </View>

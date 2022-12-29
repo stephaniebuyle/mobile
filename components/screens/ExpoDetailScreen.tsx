@@ -1,11 +1,20 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, Image, StyleSheet } from "react-native";
-import { ExpoDetailScreenProps } from "../../types";
+import { Expo, ExpoDetailScreenProps } from "../../types";
 
 
 const ExpoDetailScreen = ({ expo }: ExpoDetailScreenProps) => {
 
     const navigation: any = useNavigation();
+    
+    const expoDates: Expo = {
+        startDate: new Date(expo.startDate),
+        endDate: new Date(expo.endDate),
+        title: expo.title,
+        description: expo.description,
+        subtitle: expo.subtitle,
+        image: expo.image
+    }
 
     return(
     <View>
@@ -19,9 +28,9 @@ const ExpoDetailScreen = ({ expo }: ExpoDetailScreenProps) => {
             <View style={styles.expoWhen}>
                 <Text style={styles.expoWhenText}>Wanneer te zien</Text>
                 <View style={styles.expoDates}>
-                    <Text>{expo.startDate.toLocaleDateString('nl-NL')}</Text>
-                    <Text>   -   </Text>
-                    <Text>{expo.endDate.toLocaleDateString('nl-NL')}</Text>
+                    <Text>{`${expoDates.startDate.toLocaleDateString('nl-NL')}`+ '  -  ' + `${expoDates.endDate.toLocaleDateString('nl-NL')}`}</Text>
+
+                    <Text></Text>
                 </View>
             </View>
             <View style={styles.addToAgendaContainer}>

@@ -113,7 +113,7 @@ const DatePicker = ({ expo }: AgendaProps) => {
 
   return(
     <View style={styles.container}>
-        <CalendarPicker minDate={new Date()} maxDate={new Date(expo.endDate)} onDateChange={setSelectedStartDate} />
+        <CalendarPicker minDate={new Date()} maxDate={expo.endDate} onDateChange={setSelectedStartDate} />
         <Pressable
           style={styles.addToAgenda}
           onPress={addEvent}
