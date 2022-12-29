@@ -33,7 +33,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titleApp}>Hollands Glorie</Text>
+      <Text style={styles.titleApp}>Hollandse Glorie</Text>
       <FlatList
         data={collectionData?.artObjects}
         keyExtractor={({ id }, index) => id}

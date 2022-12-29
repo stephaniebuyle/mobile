@@ -2,8 +2,6 @@ import React from 'react'
 import { View, Text, StyleSheet } from "react-native"
 import { DetailDescriptionProps } from '../../types'
 
-
-
 const DetailDescription = ({ data } : DetailDescriptionProps) => {
 
     let dimensions: string = '';
@@ -19,10 +17,10 @@ const DetailDescription = ({ data } : DetailDescriptionProps) => {
     return (
         <View style={styles.container}>
             <Text style={styles.textTitle}>
-                {data?.title}, {data?.principalMaker}, {data?.dating.presentingDate}
+                {`${data?.title}, ${data?.principalMaker}, ${data?.dating.presentingDate}`}
             </Text>
             <Text style={styles.textMaterials}>
-                {data?.materials}, {dimensions}
+                {`${data?.materials}, ${dimensions}`}
             </Text>
             <Text style={styles.description}>
                 {data?.description}
