@@ -1,12 +1,9 @@
-import { useRoute } from "@react-navigation/native";
 import { View} from "react-native";
-import { Expo } from "../../types";
+import { Expo, PlannerScreenProps } from "../../types";
 import DatePicker from "../datePicker/DatePicker";
 
-const PlannerScreen = () => {
 
-    const route = useRoute<any>();
-    const expo: Expo = route.params?.expo;
+const PlannerScreen = ({expo}: {expo: Expo}) => {
 
     return (
         <View>

@@ -219,6 +219,15 @@ export interface DetailToFavoritesProps {
     data: Detail;
 }
 
+/* interface ExpoDetailScreen */
+export interface ExpoDetailScreenProps {
+    expo: Expo
+}
+
+/* interface PlannerScreen */
+export interface PlannerScreenProps {
+    expo: Expo
+}
 
 /* Expo component */
 export type Expo = {

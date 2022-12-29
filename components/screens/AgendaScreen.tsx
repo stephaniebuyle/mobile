@@ -2,11 +2,17 @@ import { useNavigation } from "@react-navigation/native";
 import { FlatList, Pressable, View, Image, Text, StyleSheet } from "react-native";
 import { Expo } from "../../types";
 
-const data = require('../../ExpoData.json');
+const data: Expo[] = require('../../ExpoData.json');
 
 const AgendaScreen = () => {
-    // new Date(data)
+
+    data.forEach(e => (
+        e.startDate = new Date(e.startDate),
+        e.endDate = new Date(e.endDate)
+    ))
+    
     const expos: Expo[] = data;
+
     const navigation: any = useNavigation();
     
     return(
@@ -16,7 +22,7 @@ const AgendaScreen = () => {
                 renderItem={({item}) => (
                     <Pressable
                         onPress={() => {
-                            console.log(item)
+                            {console.log(item)}
                             navigation.navigate("Expo", {item: item})}
                     }
                     >
@@ -31,9 +37,9 @@ const AgendaScreen = () => {
                                 <Text style={styles.listItemTitle}>{item.title}</Text>
                                 <Text style={styles.listItemSubtitle}>{item.subtitle}</Text>
                                 <View style={styles.listItemDates}>
-                                    <Text>{item.startDate.toString().slice(0, 10)}</Text>
-                                    <Text> - </Text>
-                                    <Text>{item.endDate.toString().slice(0, 10)}</Text>
+                                    <Text>{item.startDate.toLocaleDateString('nl-NL')}</Text>
+                                    <Text>   -   </Text>
+                                    <Text>{item.endDate.toLocaleDateString('nl-NL')}</Text>
                                 </View>
                             </View>
                         </View>
