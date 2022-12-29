@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { FlatList, Pressable, View, Image, Text, StyleSheet, ImageBackground } from "react-native";
+import { FlatList, Pressable, View, Image, Text, StyleSheet } from "react-native";
 import { Expo } from "../../types";
 
 const data = require('../../ExpoData.json');

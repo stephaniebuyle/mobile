@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, Image, StyleSheet } from "react-native";
 
-const ExpoDetailScreen = ({expo}: {expo: any}) => {
+const ExpoDetailScreen = ({ expo }: { expo: any }) => {
 
     const navigation: any = useNavigation();
 
@@ -34,7 +34,7 @@ const ExpoDetailScreen = ({expo}: {expo: any}) => {
             </View>
         </View>
     </View>
-    )
+   )
 }
 
 const styles = StyleSheet.create({

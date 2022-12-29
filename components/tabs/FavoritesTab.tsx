@@ -5,7 +5,7 @@ import FavoritesScreen from "../screens/FavoritesScreen";
 
 const Stack = createNativeStackNavigator();
 
-const SearchTab = () => {
+const FavoritesTab = () => {
     return (
         <NavigationContainer independent={true}>
             <Stack.Navigator>
@@ -16,4 +16,4 @@ const SearchTab = () => {
     )
 }
 
-export default SearchTab;
+export default FavoritesTab; 

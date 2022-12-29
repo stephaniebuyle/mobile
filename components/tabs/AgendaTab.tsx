@@ -7,7 +7,7 @@ import ExpoScreen from "../screens/ExpoScreen"
 const Stack = createNativeStackNavigator();
 
 const AgendaTab = () => {
-    return(
+    return (
         <NavigationContainer independent={true}>
             <Stack.Navigator>
                 <Stack.Screen name="Exposities in het Rijksmuseum" component={AgendaScreen} />

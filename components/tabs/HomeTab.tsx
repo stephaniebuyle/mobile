@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
-const SearchTab = () => {
+const HomeTab= () => {
     return (
         <NavigationContainer independent={true}>
             <Stack.Navigator>
@@ -16,4 +16,4 @@ const SearchTab = () => {
     )
 }
 
-export default SearchTab;
+export default HomeTab;
