@@ -1,15 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
-import { FlatList, Pressable, View, Image, Text, StyleSheet, ImageBackground } from "react-native";
+import { FlatList, Pressable, View, Image, Text, StyleSheet } from "react-native";
 import { Expo } from "../../types";
 
 const data = require('../../ExpoData.json');
 
 const AgendaScreen = () => {
+    // new Date(data)
     const expos: Expo[] = data;
     const navigation: any = useNavigation();
-
+    
     return(
-        <View style={styles.container}>
+        <View>
             <FlatList
                 data={expos}
                 renderItem={({item}) => (
@@ -29,6 +30,11 @@ const AgendaScreen = () => {
                             <View style={styles.listItemText}>
                                 <Text style={styles.listItemTitle}>{item.title}</Text>
                                 <Text style={styles.listItemSubtitle}>{item.subtitle}</Text>
+                                <View style={styles.listItemDates}>
+                                    <Text>{item.startDate.toString().slice(0, 10)}</Text>
+                                    <Text> - </Text>
+                                    <Text>{item.endDate.toString().slice(0, 10)}</Text>
+                                </View>
                             </View>
                         </View>
                     </Pressable>
@@ -40,31 +46,44 @@ const AgendaScreen = () => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-
-    },
     listItem: {
-        display: "flex", 
-        flexDirection: "row",
-        marginTop: 10,
+        flex: 1,
+        flexDirection: 'row',
+        borderRadius: 10,
+        minHeight: 90,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        marginTop: 15,
         marginLeft: 10,
-        backgroundColor: "white"
+        marginRight: 10,
+        paddingRight: 15
     },
     listItemImage: {
-        height: 100, 
-        width: 100
+        height: 50,
+        width: 50,
+        marginLeft: 10,
+        marginRight: 10,
+        resizeMode: 'contain',
+        borderRadius: 10,
     },
     listItemText: {
-        paddingTop: 3,
-        paddingLeft: 10,
-        width: 275
+        justifyContent: 'space-between',
+        width: 275,
+        padding: 10
     },
     listItemTitle: {
-        textTransform: "uppercase"
+        textTransform: "uppercase",
+        paddingRight: 20
     },
     listItemSubtitle: {
+        flex: 1,
         fontStyle: "italic",
-        color: "grey"
+        color: "grey",
+        paddingRight: 20
+    },
+    listItemDates: {
+        flex: 1,
+        flexDirection: 'row'
     }
 });
 

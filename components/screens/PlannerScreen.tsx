@@ -1,5 +1,5 @@
 import { useRoute } from "@react-navigation/native";
-import { View, Text } from "react-native";
+import { View} from "react-native";
 import { Expo } from "../../types";
 import DatePicker from "../datePicker/DatePicker";
 
@@ -7,8 +7,8 @@ const PlannerScreen = () => {
 
     const route = useRoute<any>();
     const expo: Expo = route.params?.expo;
-    
-    return(
+
+    return (
         <View>
             <DatePicker expo={expo} />
         </View>

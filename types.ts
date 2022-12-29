@@ -1,7 +1,14 @@
+import { RouteProp } from "@react-navigation/native";
+
 export interface CollectionProps {
     "count": number,
     "artObjects": ArtObject[]
 }
+
+export interface CollectionDetailProps {
+    "artObject" : ArtObjectDetail
+}
+
 export interface ArtObject {
         "links": {
             "self": string,
@@ -34,15 +41,98 @@ export interface ArtObject {
         "productionPlaces": string[]
 }
 
+export interface ArtObjectDetail {
+    "acquisition": {
+        "creditLine": string, 
+        "date": Date, 
+        "method": string
+    }, 
+    "classification": {
+        "events": string[], 
+        "iconClassDescription": string[], 
+        "iconClassIdentifier": string[], 
+        "motifs": string[], 
+        "objectNumbers": string[], 
+        "people": string[], 
+        "periods": string[], 
+        "places": string[]
+    }, 
+    "colors": Colors[], 
+    "copyrightHolder": string, 
+    "dating": {
+        "period": number, 
+        "presentingDate": string, 
+        "sortingDate": number, 
+        "yearEarly": number, 
+        "yearLate": number
+    }, 
+    "description": string, 
+    "dimensions": Dimensions[], 
+    "hasImage": boolean, 
+    "id": string, 
+    "label": {
+        "date": string, 
+        "description": string, 
+        "makerLine": string, 
+        "notes": string, 
+        "title": string
+    }, 
+    "labelText": string, 
+    "language": string, 
+    "links": {
+        "search": string
+    }, 
+    "location": string, 
+    "longTitle": string, 
+    "materials": string[], 
+    "objectCollection": string[], 
+    "objectNumber": string, 
+    "objectTypes": string[], 
+    "physicalMedium": string, 
+    "plaqueDescriptionDutch": string, 
+    "plaqueDescriptionEnglish": string, 
+    "principalMaker": string, 
+    "principalOrFirstMaker": string, 
+    "priref": string, 
+    "productionPlaces": string[], 
+    "scLabelLine": string, 
+    "showImage": boolean, 
+    "subTitle": string, 
+    "techniques": string[], 
+    "title": string, 
+    "titles": string[], 
+    "webImage": {
+        "guid": string, 
+        "height": number, 
+        "offsetPercentageX": number, 
+        "offsetPercentageY": number, 
+        "url": string, 
+        "width": number
+    }
+}
+
+export interface Colors {
+    "percentage": number,
+    "hex": string
+}
+
+export interface Dimensions {
+    "unit": string,
+    "type": string,
+    "value": string
+}
+
 export interface CardProps {
     item: ArtObject;
     navigation: any;
 }
+
 export interface PaginationProps {
     callbackSetPage: (value: number) => void;
     count: number,
     page: number
 }
+
 export interface SearchProps {
 
     callbackSetSearch: (value: string) => void;
@@ -50,7 +140,6 @@ export interface SearchProps {
     callbackRunSearch: () => void;
     fieldValue: string;
     searchValue : string;
-
 }
 
 export interface SearchResultProps {
@@ -67,6 +156,11 @@ export interface ItemProps{
         "url": string,
     },
     "productionPlaces": string[]
+}
+
+export interface FavoriteCardProps {
+    detail: Detail, 
+    navigation: any 
 }
 
 export type Detail = {
@@ -100,6 +194,33 @@ export type Detail = {
     }
 }
 
+export interface DetailImageProps {
+  uri: string
+}
+
+/* interfaces datepicker */
+export interface AgendaProps {
+    expo: Expo;
+  }
+  
+export interface EventDetails {
+    title: string,
+    startDate: Date,
+    endDate: Date
+  }
+
+/* interface DetailDescription */ 
+export interface DetailDescriptionProps {
+    data?: ArtObjectDetail;
+}
+
+/* interface DetailToFavorites */ 
+export interface DetailToFavoritesProps {
+    data: Detail;
+}
+
+
+/* Expo component */
 export type Expo = {
     startDate: Date,
     endDate: Date,

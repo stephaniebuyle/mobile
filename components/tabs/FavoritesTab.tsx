@@ -1,17 +1,19 @@
-import { View, Text } from "react-native"
-import React, { useContext } from "react";
-import { FavoritesContext } from "../Context";
+import DetailScreen from "../screens/DetailScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import FavoritesScreen from "../screens/FavoritesScreen";
+
+const Stack = createNativeStackNavigator();
 
 const FavoritesTab = () => {
-
-    const { favorites, setFavorites } = useContext(FavoritesContext);
-    
-    
-    return(
-        <View>
-            {favorites.map((id) => <Text key={id.params.item.id}>{id.params.item.title}</Text>)}
-        </View>
+    return (
+        <NavigationContainer independent={true}>
+            <Stack.Navigator>
+                <Stack.Screen name="Favorieten" component={FavoritesScreen} />
+                <Stack.Screen name="Detail" component={DetailScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
 
-export default FavoritesTab;
+export default FavoritesTab; 

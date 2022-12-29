@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, View, Image, Pressable, StyleSheet} from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, ActivityIndicator } from "react-native";
 import { CollectionProps } from "../../types";
 import { useNavigation } from "@react-navigation/native";
 import SearchBar from "../search/SearchBar";
@@ -11,6 +11,7 @@ const SearchScreen = () => {
     const [collectionData, setCollectionData] = useState<CollectionProps>();
     const [searchField, setSearchField] = useState<String>("q");
     const [searchValue, setSearchValue] = useState<String>("");
+    const [loading, setLoading] = useState(true);
     const [page, setPage] = useState<Number>(1)
 
     const navigation: any = useNavigation();
@@ -30,9 +31,13 @@ const SearchScreen = () => {
     }
 
     const getData = () => {
+        setLoading(true);
         fetchData()
             .then((res) => {
-                setCollectionData(res)
+
+                setCollectionData(res);
+                setLoading(false);
+
                 console.log("setting collection data");
             })
             .catch((e) => { console.log(e.message) })
@@ -57,12 +62,13 @@ const SearchScreen = () => {
 
     return (
         <View style={styles.container}>
-            
             <SearchBar callbackSetSearch={handleSetSearch} callbackSetField={handleSetField} callbackRunSearch={handleRunSearch} fieldValue={searchField} searchValue={searchValue} />
             <Text style={styles.text}>Resultaten: {collectionData?.count}</Text>
+            <SafeAreaView>
+                {loading ? <ActivityIndicator size="large" color="purple" /> : <></>}
+            </SafeAreaView>
             <SearchResults navigation={navigation} collectionData={collectionData} />
-            <Pagination callbackSetPage={setPage} count={collectionData?.count} page={page}/>
-
+            <Pagination callbackSetPage={setPage} count={collectionData?.count} page={page} />
         </View>
 
     )
@@ -74,7 +80,13 @@ const styles = StyleSheet.create({
         padding: 24
     },
     text: {
-        padding: 15
+        padding: 15,   
+        fontSize: 15,
+        fontWeight: 'bold'
     },
-  });
+    pagination: {
+        flex: 1
+    }
+});
+
 export default SearchScreen;

@@ -26,6 +26,7 @@ const HomeScreen = () => {
     fetchData()
       .then((res) => {
         setCollectionData(res)
+        console.log(collectionData)
       })
       .catch((e) => { console.log(e.message) })
   }, []);
@@ -37,7 +38,7 @@ const HomeScreen = () => {
         data={collectionData?.artObjects}
         keyExtractor={({ id }, index) => id}
         renderItem={({ item }) => (
-         <HomeCard item={item} navigation={navigation}/>
+          <HomeCard item={item} navigation={navigation} />
         )}
       />
     </View>
@@ -46,7 +47,7 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
     alignItems: 'center',
     paddingTop: Constants.statusBarHeight
   },

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Platform } from "react-native";
+import { View, TextInput, StyleSheet, TouchableOpacity} from "react-native";
 import { SearchProps } from "../../types";
 import { FontAwesome } from '@expo/vector-icons';
-import { Button, Menu, Divider, Provider } from 'react-native-paper';
+import { Button, Menu, Provider } from 'react-native-paper';
 
 const SearchBar = (props: SearchProps) => {
 
@@ -16,10 +16,7 @@ const SearchBar = (props: SearchProps) => {
         ['type', 'Type'],
         ['technique', 'Techniek'],
         ['material', 'Materiaal'],
-       ]);
-     
-
-
+    ]);
 
     const handleChangeSelect = (value: string) => {
         props.callbackSetField(value);
@@ -35,12 +32,12 @@ const SearchBar = (props: SearchProps) => {
                             visible={visible}
                             onDismiss={closeMenu}
                             anchor={<Button onPress={openMenu}>{arr.get(props.fieldValue)}</Button>}>
-                            <Menu.Item onPress={() => {handleChangeSelect("q") }} title="Alles" />
-                            <Menu.Item onPress={() => {handleChangeSelect("involvedMaker") }} title="Artiest" />
-                            <Menu.Item onPress={() => {handleChangeSelect("type") }} title="Type" />
-                            <Menu.Item onPress={() => {handleChangeSelect("technique") }} title="Techniek" />
-                            <Menu.Item onPress={() => {handleChangeSelect("material") }} title="Materiaal" />
-                           
+                            <Menu.Item onPress={() => { handleChangeSelect("q") }} title="Alles" />
+                            <Menu.Item onPress={() => { handleChangeSelect("involvedMaker") }} title="Artiest" />
+                            <Menu.Item onPress={() => { handleChangeSelect("type") }} title="Type" />
+                            <Menu.Item onPress={() => { handleChangeSelect("technique") }} title="Techniek" />
+                            <Menu.Item onPress={() => { handleChangeSelect("material") }} title="Materiaal" />
+
                         </Menu>
                     </View>
                 </Provider>
@@ -52,11 +49,8 @@ const SearchBar = (props: SearchProps) => {
                 }}>
                     <FontAwesome style={styles.magnify} name="search" size={20} color="white" />
                 </TouchableOpacity>
-
-
             </View>
-
-        </View >
+        </View>
     )
 }
 const styles = StyleSheet.create({
@@ -68,17 +62,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         marginBottom: 0,
-
     },
     picker: {
         height: 50,
         width: 50,
         flex: 3
-
     },
     pickerItem: {
         fontSize: 15,
-
     },
     button: {
         marginLeft: 8,
@@ -101,4 +92,5 @@ const styles = StyleSheet.create({
         paddingLeft: 8
     }
 });
+
 export default SearchBar;

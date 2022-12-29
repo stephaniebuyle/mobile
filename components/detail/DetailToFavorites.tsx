@@ -1,43 +1,35 @@
-import React, { useContext, useEffect } from "react";
-import { Pressable, Text } from "react-native"
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Detail } from "../../types";
+import React, { useContext } from "react";
+import { Pressable, StyleSheet } from "react-native"
+import { DetailToFavoritesProps } from "../../types";
 import { FavoritesContext } from "../Context";
-import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
-interface DetailToFavoritesProps {
-    data: Detail;
-}
+const DetailToFavorites = ({ data }: DetailToFavoritesProps) => {
 
-const DetailToFavorites = ({ data } : DetailToFavoritesProps ) => {
+    const { favorites, setFavorites, addFavorite, isFavorite, removeFavorite } = useContext(FavoritesContext);
 
-    const { favorites, setFavorites } = useContext(FavoritesContext);
-
-    useEffect(()=>{
-       saveFavorites(favorites); 
-    }, [favorites])
-
-    const saveFavorites = async (favorites: Detail[] ) => {
-        await AsyncStorage.setItem("favorites", JSON.stringify(favorites));
-    }
-
-    const addFavorite = async ( data : Detail) => {
-        if((favorites.findIndex(favorite => favorite.key == data.key)) <= -1){
-            setFavorites([...favorites, data]);
-        } else {
-            const array = favorites.filter(favorite => favorite.key !== data.key);
-            setFavorites(array);
-        }
-    }
-
-    return(
+    return (
         <Pressable
-            onPress={() => addFavorite(data)}
+            style={styles.button}
+            onPress={() => {
+                if (!isFavorite(data.params.item.id)) {
+                    addFavorite(data)
+                }
+                else {
+                    removeFavorite(data.params.item.id)
+                }
+            }}
         >
-            {favorites.find(favorite => favorite.key == data.key) ? <AntDesign name="heart" size={24} color="red" /> : <AntDesign name="heart" size={24} color="grey" /> }
+            {isFavorite(data.params.item.id) ? <MaterialIcons name="favorite" size={24} color="purple" /> : <MaterialIcons name="favorite-border" size={24} color="purple" />}
         </Pressable>
     )
 }
+const styles = StyleSheet.create({
+    button: {
+        marginRight: 10,
+        padding: 10,
+    },
+});
 
 export default DetailToFavorites;
 

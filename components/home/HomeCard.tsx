@@ -1,6 +1,6 @@
 import React from 'react'
 import { Pressable, View, StyleSheet, Image, Text } from 'react-native';
-import { ArtObject, CardProps } from "../../types";
+import { CardProps } from "../../types";
 
 const HomeCard = (props: CardProps) => {
     return (
