@@ -1,6 +1,6 @@
 import { useRoute } from "@react-navigation/native";
 import { View, StyleSheet } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DetailImage from "../detail/DetailImage";
 import DetailDescription from "../detail/DetailDescription";
 import DetailToFavorites from "../detail/DetailToFavorites";
