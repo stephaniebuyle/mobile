@@ -26,6 +26,7 @@ const HomeScreen = () => {
     fetchData()
       .then((res) => {
         setCollectionData(res)
+        console.log(collectionData)
       })
       .catch((e) => { console.log(e.message) })
   }, []);
