@@ -47,9 +47,6 @@ export interface ArtObjectDetail {
         "date": Date, 
         "method": string
     }, 
-    //"artistRole": null, 
-    //"associations": [], 
-    //"catRefRPK": [], 
     "classification": {
         "events": string[], 
         "iconClassDescription": string[], 
@@ -61,7 +58,6 @@ export interface ArtObjectDetail {
         "places": string[]
     }, 
     "colors": Colors[], 
-    //"colorsWithNormalization": [[Object], [Object], [Object], [Object], [Object], [Object], [Object]], 
     "copyrightHolder": string, 
     "dating": {
         "period": number, 
@@ -72,12 +68,8 @@ export interface ArtObjectDetail {
     }, 
     "description": string, 
     "dimensions": Dimensions[], 
-    //"documentation": [], 
-    //"exhibitions": [], 
     "hasImage": boolean, 
-    //"historicalPersons": [], 
     "id": string, 
-    //"inscriptions": [], 
     "label": {
         "date": string, 
         "description": string, 
@@ -92,19 +84,14 @@ export interface ArtObjectDetail {
     }, 
     "location": string, 
     "longTitle": string, 
-    //"makers": string[], 
     "materials": string[], 
-    //"normalized32Colors": Colors[], 
-    //"normalizedColors": Colors[], 
     "objectCollection": string[], 
     "objectNumber": string, 
     "objectTypes": string[], 
     "physicalMedium": string, 
-    //"physicalProperties": [], 
     "plaqueDescriptionDutch": string, 
     "plaqueDescriptionEnglish": string, 
     "principalMaker": string, 
-    //"principalMakers": [[Object]], 
     "principalOrFirstMaker": string, 
     "priref": string, 
     "productionPlaces": string[], 
@@ -124,7 +111,6 @@ export interface ArtObjectDetail {
     }
 }
 
-
 export interface Colors {
     "percentage": number,
     "hex": string
@@ -140,11 +126,13 @@ export interface CardProps {
     item: ArtObject;
     navigation: any;
 }
+
 export interface PaginationProps {
     callbackSetPage: (value: number) => void;
     count: number,
     page: number
 }
+
 export interface SearchProps {
 
     callbackSetSearch: (value: string) => void;
@@ -152,7 +140,6 @@ export interface SearchProps {
     callbackRunSearch: () => void;
     fieldValue: string;
     searchValue : string;
-
 }
 
 export interface SearchResultProps {
@@ -223,15 +210,15 @@ export interface EventDetails {
   }
 
 /* interface DetailDescription */ 
-
 export interface DetailDescriptionProps {
-    data: RouteProp<any>;
+    data?: ArtObjectDetail;
 }
 
 /* interface DetailToFavorites */ 
 export interface DetailToFavoritesProps {
     data: Detail;
 }
+
 
 /* Expo component */
 export type Expo = {

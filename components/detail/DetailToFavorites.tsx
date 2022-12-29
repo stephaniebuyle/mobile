@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Pressable, StyleSheet } from "react-native"
 import { DetailToFavoritesProps } from "../../types";
 import { FavoritesContext } from "../Context";
-import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const DetailToFavorites = ({ data }: DetailToFavoritesProps) => {
 
@@ -10,6 +10,7 @@ const DetailToFavorites = ({ data }: DetailToFavoritesProps) => {
 
     return (
         <Pressable
+            style={styles.button}
             onPress={() => {
                 if (!isFavorite(data.params.item.id)) {
                     addFavorite(data)
@@ -17,19 +18,16 @@ const DetailToFavorites = ({ data }: DetailToFavoritesProps) => {
                 else {
                     removeFavorite(data.params.item.id)
                 }
-            }
-            }
-            style={styles.button}
+            }}
         >
-            {isFavorite(data.params.item.id) ? <AntDesign name="heart" size={24} color="purple" /> : <AntDesign name="heart" size={24} color="black" />}
+            {isFavorite(data.params.item.id) ? <MaterialIcons name="favorite" size={24} color="purple" /> : <MaterialIcons name="favorite-border" size={24} color="purple" />}
         </Pressable>
     )
 }
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: "lightgrey",
-        padding: 5,
-        margin: 5
+        marginRight: 10,
+        padding: 10,
     },
 });
 

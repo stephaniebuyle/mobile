@@ -9,7 +9,6 @@ const Stack = createNativeStackNavigator();
 const ExpoScreen = () => {
 
     const route: RouteProp<any> = useRoute();
-    console.log(route.params?.item)
 
     return (
         <NavigationContainer independent={true}>

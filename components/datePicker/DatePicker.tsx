@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  View, Text, Platform, Alert, Pressable, StyleSheet } from 'react-native';
+import {  View, Text, Platform, Alert, Pressable, StyleSheet, Linking } from 'react-native';
 import * as Calendar from 'expo-calendar';
 import { AgendaProps, EventDetails } from '../../types';
 import CalendarPicker from 'react-native-calendar-picker';
@@ -14,6 +14,8 @@ const DatePicker = ({ expo }: AgendaProps) => {
       const { status } = await Calendar.requestCalendarPermissionsAsync();
       if (status === 'granted') {
         setCalendars(await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT));
+      } else if (status === 'denied') {
+        Linking.openSettings();
       }
     })();
   }, []);

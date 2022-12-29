@@ -1,5 +1,5 @@
 import { useRoute } from "@react-navigation/native";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import DetailImage from "../detail/DetailImage";
 import DetailDescription from "../detail/DetailDescription";
@@ -9,9 +9,7 @@ import { CollectionDetailProps } from "../../types";
 const DetailScreen = () => {
 
     const data = useRoute<any>();
-
     const objectNumber: string = data.params?.item.objectNumber;
-    console.log(objectNumber)
     const [collectionDetailData, setCollectionDetailData] = useState<CollectionDetailProps>();
 
 
@@ -28,27 +26,27 @@ const DetailScreen = () => {
     useEffect(() => {
         fetchData()
           .then((res) => {
-            console.log(res)
-            setCollectionDetailData(res)
-            console.log(collectionDetailData);
+              setCollectionDetailData(res)
           })
           .catch((e) => { console.log(e.message) })
     }, []);
 
-
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <DetailImage uri={data.params?.item.webImage.url} />
-            <DetailDescription data={data} />
-            <DetailToFavorites data={data} />
-        </View>
+            <View style={styles.favoriteButton}>
+              <DetailToFavorites data={data} />
+            </View>
+            <DetailDescription data={collectionDetailData?.artObject} />
+        </ScrollView>
     )
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1, 
-        justifyContent: "center", 
-        alignItems: "center" 
+        flex: 1
     },
+    favoriteButton: {
+      marginLeft: 'auto'
+    }
 });
 export default DetailScreen;

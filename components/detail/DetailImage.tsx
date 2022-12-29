@@ -14,8 +14,8 @@ const DetailImage = ({ uri } : DetailImageProps) => {
 }
 const styles = StyleSheet.create({
   image: {
-    width: 300, 
-    height: 300
+    width: 400, 
+    height: 400
   },
 });
 export default DetailImage
