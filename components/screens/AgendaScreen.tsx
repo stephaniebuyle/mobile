@@ -1,6 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
 import { FlatList, Pressable, View, Image, Text, StyleSheet } from "react-native";
-import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
 import { Expo } from "../../types";
 
 const data: Expo[] = require('../../ExpoData.json');
@@ -10,6 +9,15 @@ const AgendaScreen = () => {
     const expos: Expo[] = data;
     const navigation: any = useNavigation();
     
+    const expoDates: Expo[] = expos.map(e => ({
+        startDate: new Date(e.startDate),
+        endDate: new Date(e.endDate),
+        title: e.title,
+        description: e.description,
+        subtitle: e.subtitle,
+        image: e.image
+    }))
+    
     return(
         <View>
             <FlatList
@@ -18,7 +26,6 @@ const AgendaScreen = () => {
                 renderItem={({item}) => (
                     <Pressable
                         onPress={() => {
-                            {console.log(item)}
                             navigation.navigate("Expo", {item: item})}
                     }
                     >
@@ -33,7 +40,7 @@ const AgendaScreen = () => {
                                 <Text style={styles.listItemTitle}>{item.title}</Text>
                                 <Text style={styles.listItemSubtitle}>{item.subtitle}</Text>
                                 <View style={styles.listItemDates}>
-                                    <Text>{`${item.startDate.toString().slice(0,10)}` + '  -  ' + `${item.endDate.toString().slice(0,10)}`}</Text>
+                                    <Text>{`${expoDates.find(expo => expo.title === item.title)?.startDate.toLocaleDateString('en-GB')}` + '  -  ' + `${expoDates.find(expo => expo.title === item.title)?.endDate.toLocaleDateString('en-GB')}`}</Text>
                                 </View>
                             </View>
                         </View>

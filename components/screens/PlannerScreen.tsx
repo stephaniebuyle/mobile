@@ -1,9 +1,9 @@
 import { View} from "react-native";
-import { Expo, PlannerScreenProps } from "../../types";
+import { PlannerScreenProps } from "../../types";
 import DatePicker from "../datePicker/DatePicker";
 
 
-const PlannerScreen = ({expo}: {expo: Expo}) => {
+const PlannerScreen = ({expo}: PlannerScreenProps) => {
 
     return (
         <View>

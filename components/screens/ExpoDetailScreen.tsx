@@ -28,7 +28,7 @@ const ExpoDetailScreen = ({ expo }: ExpoDetailScreenProps) => {
             <View style={styles.expoWhen}>
                 <Text style={styles.expoWhenText}>Wanneer te zien</Text>
                 <View style={styles.expoDates}>
-                    <Text>{`${expoDates.startDate.toLocaleDateString('nl-NL')}`+ '  -  ' + `${expoDates.endDate.toLocaleDateString('nl-NL')}`}</Text>
+                    <Text>{`${expoDates.startDate.toLocaleDateString('en-GB')}`+ '  -  ' + `${expoDates.endDate.toLocaleDateString('en-GB')}`}</Text>
 
                     <Text></Text>
                 </View>
