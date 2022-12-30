@@ -57,9 +57,6 @@ const DatePicker = ({ expo }: AgendaProps) => {
         ? await getDefaultCalendarSource()
         : { isLocalAccount: true, type: 'Expo Calendar', name: 'Expo Calendar' };
 
-    console.log('default calendar Source');
-    console.log(defaultCalendarSource);
-
     const newCalendarID = await Calendar.createCalendarAsync({
       title: 'Expo Calendar',
       color: 'blue',
@@ -70,14 +67,12 @@ const DatePicker = ({ expo }: AgendaProps) => {
       accessLevel: Calendar.CalendarAccessLevel.OWNER,
     });
 
-    console.log(`Your new calendar ID is: ${newCalendarID}`);
     const calendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
-    console.log(calendars);
-
     return newCalendarID;
   }
 
   const addEventToCalendar = async (calendarId: string) => {
+
     const startEventDate: Date = new Date(selectedStartDate);
     const endEventDate: Date = new Date(selectedStartDate);
     startEventDate.setHours(9);
@@ -112,7 +107,7 @@ const DatePicker = ({ expo }: AgendaProps) => {
 
   return(
     <View style={styles.container}>
-        <CalendarPicker onDateChange={setSelectedStartDate} />
+        <CalendarPicker minDate={new Date()} maxDate={expo.endDate} onDateChange={setSelectedStartDate} />
         <Pressable
           style={styles.addToAgenda}
           onPress={addEvent}

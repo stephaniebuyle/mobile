@@ -219,12 +219,15 @@ export interface DetailToFavoritesProps {
     data: Detail;
 }
 
-/* inerface DetailImage */ 
+/* interface ExpoDetailScreen */
+export interface ExpoDetailScreenProps {
+    expo: Expo
+}
 
-export interface DetailImageProps {
-    uri: string
-  }
-  
+/* interface PlannerScreen */
+export interface PlannerScreenProps {
+    expo: Expo
+}
 
 /* Expo component */
 export type Expo = {
