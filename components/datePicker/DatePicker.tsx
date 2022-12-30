@@ -3,6 +3,7 @@ import {  View, Text, Platform, Alert, Pressable, StyleSheet, Linking } from 're
 import * as Calendar from 'expo-calendar';
 import { AgendaProps, EventDetails } from '../../types';
 import CalendarPicker from 'react-native-calendar-picker';
+import { FontAwesome } from "@expo/vector-icons";
 
 const DatePicker = ({ expo }: AgendaProps) => {
 
@@ -85,8 +86,13 @@ const DatePicker = ({ expo }: AgendaProps) => {
     }
 
     const eventIdInCalendar = await Calendar.createEventAsync(calendarId, eventDetails);
+    
     if (Platform.OS == 'android') {
       Calendar.openEventInCalendar(eventIdInCalendar);
+    } else if (Platform.OS == 'ios') {
+      const referenceDate: Date = new Date('2001-01-01');
+      const seconds: number = Math.round(startEventDate.getTime() / 1000) - Math.round(referenceDate.getTime() / 1000);
+      await Linking.openURL(`calshow:${seconds}`);
     }
   }
 
@@ -95,7 +101,6 @@ const DatePicker = ({ expo }: AgendaProps) => {
       if (calendarId !== undefined) {
         try {
           addEventToCalendar(calendarId);
-          Alert.alert("Toegevoegd aan je agenda!");
         } catch (e) {
           console.log(e)
         }
@@ -107,14 +112,16 @@ const DatePicker = ({ expo }: AgendaProps) => {
 
   return(
     <View style={styles.container}>
-        <CalendarPicker minDate={new Date()} maxDate={expo.endDate} onDateChange={setSelectedStartDate} />
+      <CalendarPicker minDate={new Date()} maxDate={expo.endDate} onDateChange={setSelectedStartDate} />
+      {selectedStartDate ? 
         <Pressable
           style={styles.addToAgenda}
           onPress={addEvent}
         >
-          {selectedStartDate ? <Text style={styles.addToAgendaText}>Zet in agenda</Text> : <Text style={styles.addToAgendaText}>Kies een datum</Text>}
+          <Text style={styles.addToAgendaText}><FontAwesome name="calendar-plus-o" size={17} color="white" /> Zet in agenda</Text>
         </Pressable>
-
+        : <Text style={styles.chooseDateText}> Kies een datum</Text>
+      }
     </View>
   )
 }
@@ -132,6 +139,9 @@ const styles = StyleSheet.create({
   },
   addToAgendaText: {
       color: 'white'
+  },
+  chooseDateText: {
+    padding: 25
   }
 })
 

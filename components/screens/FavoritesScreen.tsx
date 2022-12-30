@@ -7,7 +7,7 @@ import { Entypo } from "@expo/vector-icons";
 
 const FavoritesScreen = () => {
 
-    const { favorites, setFavorites } = useContext(FavoritesContext);
+    const { favorites } = useContext(FavoritesContext);
     const navigation: any = useNavigation();
 
     const [page, setPage] = useState(0);
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     pagination: {
-
         borderWidth: 1,
         borderRadius: 10,
         alignSelf: 'center',

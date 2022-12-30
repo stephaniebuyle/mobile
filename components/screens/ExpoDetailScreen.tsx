@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, Image, StyleSheet } from "react-native";
 import { Expo, ExpoDetailScreenProps } from "../../types";
-
 import { FontAwesome } from "@expo/vector-icons";
 
 const ExpoDetailScreen = ({ expo }: ExpoDetailScreenProps) => {

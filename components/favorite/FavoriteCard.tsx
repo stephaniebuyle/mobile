@@ -6,7 +6,7 @@ import { FavoritesContext } from "../Context";
 
 const FavoriteCard = (props: FavoriteCardProps) => {
 
-    const { favorites, removeFavorite } = useContext(FavoritesContext);
+    const { removeFavorite } = useContext(FavoritesContext);
 
     return (
         <Pressable
@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#eae4ed',
         alignItems: 'center',
         marginTop: 15,
+        marginLeft: 10,
+        marginRight: 10,
         paddingRight: 15,
         shadowColor: '#171717',
         shadowOffset: {width: 1, height: 1},
